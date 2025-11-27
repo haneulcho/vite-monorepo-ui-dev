@@ -1,0 +1,115 @@
+.#{$app-name} {
+  .section3 {
+    padding-left: clamp(20px, 7vw, 132px);
+    padding-right: clamp(20px, 7vw, 132px);
+    padding-top: 100px;
+    overflow-x: hidden;
+    overflow-y: inherit;
+
+    .app-inner {
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .imgItem01 {
+      position: relative;
+      width: clamp(190px, 30vw, 576px);
+      z-index: 1;
+
+      .imgItem02 {
+        width: clamp(190px, 30vw, 576px);
+        position: absolute;
+        // top: clamp(100px, 5vw, 540px);
+        top: -40vh;
+        left: 50%;
+
+        img {
+          position: relative;
+        }
+      }
+    }
+
+    .imgItem03 {
+      width: clamp(290px, 38vw, 734px);
+      margin-left: auto;
+      margin-top: 364px;
+
+      position: relative;
+
+      .text {
+        position: absolute;
+        right: 70px;
+        bottom: 60px;
+      }
+
+    }
+
+    @include screen("mobile") {
+      padding: 0;
+
+      .app-inner {
+        display: block;
+        max-width: 430px;
+      }
+
+      .imgItem {
+        width: 100%;
+
+        img {
+          width: 66%;
+        }
+      }
+
+      .imgItem01 {
+
+        position: relative;
+
+        .text {
+          display: block;
+          margin-top: 30px;
+          width: 360px;
+          padding-left: 20px;
+
+
+        }
+
+        img {
+          float: left;
+        }
+
+        .imgItem02 {
+          width: 100%;
+          position: static;
+
+          img {
+            float: right;
+            margin-top: -80vh;
+          }
+        }
+      }
+
+      .imgItem03 {
+        width: 100%;
+        padding: 20px;
+
+        img {
+          width: 100%;
+          margin-top: 30vh;
+        }
+
+        margin-left: auto;
+        margin-top: 364px;
+        position: static;
+
+        .text {
+          position: absolute;
+          right: 70px;
+          bottom: 60px;
+        }
+
+      }
+    }
+  }
+}
