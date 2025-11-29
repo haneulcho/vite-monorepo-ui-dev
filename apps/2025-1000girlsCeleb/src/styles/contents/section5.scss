@@ -1,179 +1,70 @@
 .#{$app-name} {
   .section5 {
-    padding-left: clamp(20px, 7vw, 132px);
-    padding-right: clamp(20px, 7vw, 132px);
-    padding-top: 170px;
+    background-image: url(images/sec05-bg.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: 150px;
+    padding-bottom: 220px;
 
     h3 {
-      font-size: clamp(2.8rem, 3vw, 5.5rem);
-      line-height: clamp(40px, 4vw, 76px);
-      margin-bottom: clamp(40px, 4vw, 100px);
-      font-weight: 700;
-    }
+      width: clamp(324px, 40vw, 763px);
 
-    ul {
-      display: flex;
-      gap: clamp(0px, 0.5vw, 72px);
-
-      li {
-        flex: 1;
-
-        h3 {
-          font-weight: 800;
-          font-size: clamp(2rem, 2.5vw, 3.5rem);
-          margin-top: clamp(16px, 4vw, 40px);
-          margin-bottom: 10px;
-        }
-
-        p {
-          font-weight: 600;
-          font-size: clamp(1.6rem, 1.5vw, 2.3rem);
-          line-height: clamp(28px, 3vw, 40px);
-          letter-spacing: -0.5px;
-        }
-
-        &+li {
-          margin-top: 140px;
-
-          &+li {
-            margin-top: 280px;
-          }
-        }
+      img {
+        width: 100%;
       }
     }
 
-    .buttonline {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      margin-top: 90px;
+    .btn {
+      margin-left: clamp(12px, 5vw, 66px);
+      margin-bottom: clamp(30px, 10vw, 120px);
+    }
 
-      &:after,
-      &:before {
-        flex: 1;
-        content: '';
-        height: 1px;
-        width: 516px;
-        background-color: #959191;
-      }
+    p {
+      color: #fff;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      line-height: clamp(19px, 3vw, 28px);
 
-      .btn {
-        flex: none;
-        display: inline-flex;
-        justify-content: space-between;
-        width: clamp(300px, 30vw, 462px);
-
-        height: clamp(68px, 8vw, 100px);
-        border-radius: 100px;
-        font-size: clamp(1.6rem, 2vw, 2.7rem);
-        font-weight: 700;
-        align-items: center;
-        border: 1px solid #000;
-        padding-left: clamp(40px, 3vw, 74px);
-        padding-right: clamp(30px, 3vw, 54px);
-
-
-        &:hover {
-          &:after {
-            transform: translateX(10px);
-          }
-        }
-
-        &:after {
-          transition: all .4s;
-          content: '';
-          display: block;
-          width: 11px;
-          height: 23px;
-          background: url(images/ico-btnArrow.png) no-repeat center;
-          background-size: contain;
-
-        }
+      img {
+        margin-left: 6px;
+        margin-right: 0px;
+        margin-top: 4px;
+        width: clamp(84px, 15vw, 125px);
       }
     }
 
 
     @include screen("mobile") {
-      padding: 20% 0 20% 0;
 
-      h3 {
-        padding-left: 20px;
-      }
+      background-image: none;
+      background-color: #c1b3a3;
+      padding-top: 0%;
+      padding-bottom: 15%;
 
-      ul {
-        display: block;
-
-        li {
-          max-width: 430px;
-          margin: auto;
-
-          img {
-            display: block;
-            width: 90%;
-
-          }
-
-          h3 {
-            padding-left: 43px;
-          }
-
-          p {
-            padding-left: 80px;
-          }
-
-          &+li {
-            margin-top: 40px;
-
-            img {
-              margin: auto;
-            }
-
-            &+li {
-              img {
-                margin-right: 0;
-              }
-
-              margin-top: 40px;
-            }
-          }
-        }
-      }
-
-      .buttonline {
-        display: block;
-        margin-top: 46px;
-        padding: 0 20px;
-
+      .app-inner {
         text-align: center;
+        margin-top: -120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-        &:after,
-        &:before {
-          content: none;
+
+
+      p {
+        text-align: left;
+        margin-top: 20px;
+
+        br {
+          display: none;
         }
 
-        .btn {
-          width: 100%;
-          border: 2px solid #000;
-          max-width: 430px;
-
-          &:hover {
-            &:after {
-              transform: translateX(10px);
-            }
-          }
-
-          &:after {
-            transition: all .4s;
-            content: '';
-            display: block;
-            width: 11px;
-            height: 23px;
-            background: url(images/ico-btnArrow.png) no-repeat center;
-            background-size: contain;
-
-          }
+        img {
+          margin-top: 0px;
+          width: 72px;
         }
       }
+
     }
   }
 }

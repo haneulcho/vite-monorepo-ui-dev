@@ -1,54 +1,174 @@
 .#{$app-name} {
   .section6 {
+    background-color: #eee7e1;
+    padding-top: 130px;
+    padding-bottom: 130px;
     overflow: inherit;
-    padding-left: clamp(20px, 7vw, 132px);
-    padding-right: clamp(20px, 7vw, 132px);
-    padding-top: 186px;
-    padding-bottom: 186px;
 
-    .row {
-      display: flex;
-      gap: clamp(20px, 3vw, 50px);
-
-      .left {
-
-        transition: all .4s;
-
-        img {
-          position: sticky;
-          transition: all .4s;
-          top: 86px;
-          width: clamp(300px, 40vw, 691px);
-        }
-      }
-
-      .right {
-        flex: 1;
-      }
+    .app-inner {
+      max-width: 1300px;
     }
 
+    h3 {
+      margin-bottom: clamp(34px, 10vw, 104px);
+    }
 
+    .row {
+      align-items: end;
 
-    @include screen("mobile") {
-      padding-top: 0;
-      padding-bottom: 15%;
-      padding-left: 0;
-      padding-right: 0;
+      .column {
+        &.image {
+          position: relative;
+          width: clamp(400px, 40vw, 660px);
 
-      .row {
-        display: block;
-
-        .left {
-          img {
-            position: static;
+          .pic {
             width: 100%;
+          }
+
+          .bear {
+            width: clamp(150px, 20vw, 310px);
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            animation: shake 2s ease-in-out infinite;
           }
         }
 
-        .insta_area {
-          padding: 20px;
+        &.info {
+          flex: 1;
+
+          .paper {
+            padding-top: 114px;
+            display: flex;
+            justify-content: center;
+            color: #3d4b63;
+            background-image: url(images/paper.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            height: 534px;
+
+            p {
+              display: flex;
+              flex-direction: column;
+              gap: clamp(10px, 2vw, 24px);
+
+              small {
+                font-family: 'MangoBoardTtobaks';
+                font-weight: 400;
+                font-size: clamp(1.6rem, 2vw, 2.3rem);
+                line-height: clamp(27px, 3vw, 36px);
+              }
+
+              span {
+                font-family: 'MangoBoardTtobaks';
+                font-weight: 700;
+                font-size: clamp(1.6rem, 2vw, 2.5rem);
+                line-height: clamp(27px, 3vw, 46px);
+
+                &:before {
+                  content: '';
+                  display: inline-block;
+                  width: clamp(12px, 2vw, 18px);
+                  height: clamp(16px, 2vw, 23px);
+                  background-image: url(images/ico-quotes-start.png);
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  position: absolute;
+                  margin-left: -24px;
+                }
+
+                &:after {
+                  content: '';
+                  display: inline-block;
+                  width: clamp(12px, 2vw, 18px);
+                  height: clamp(16px, 2vw, 23px);
+                  background-image: url(images/ico-quotes-end.png);
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  position: relative;
+                  bottom: 4px;
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
         }
       }
     }
+
+    @include screen("mobile") {
+      padding-top: 15%;
+      padding-bottom: 15%;
+
+      .app-inner {
+        max-width: 100%;
+        padding: 0;
+      }
+
+
+
+      .row {
+        display: block;
+        padding: 0 10px;
+
+        .column {
+          &.image {
+            position: relative;
+            width: 95%;
+            margin: 0 auto;
+
+            .pic {
+              width: 100%;
+            }
+
+            .bear {
+
+              bottom: -40px;
+              left: 0;
+            }
+          }
+
+          &.info {
+            .paper {
+              padding-top: 90px;
+              text-align: center;
+              background-image: url(images/paper-mo.png);
+              background-position: center center;
+              width: 100%;
+              height: auto;
+              margin-top: -40px;
+              background-size: 400px;
+
+              p {
+
+
+                span {
+
+                  &:before {
+                    margin-left: -16px;
+                  }
+
+                  &:after {
+                    margin-left: 2px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .girlsCeleb .section6 .row .column.image .bear {
+    left: 0;
+    bottom: -50px;
+  }
+
+  .girlsCeleb .section6 .row .column.info .paper {
+    // height: 400px;
   }
 }

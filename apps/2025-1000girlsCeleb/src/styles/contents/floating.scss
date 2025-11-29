@@ -1,0 +1,62 @@
+.#{$app-name} {
+  .floating-button {
+    display: block;
+    text-indent: -999rem;
+    background-image: url(images/btn-floating.png);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: fixed;
+    z-index: 10;
+    bottom: 80px;
+    right: 40px;
+    width: clamp(142px, 10vw, 242px);
+    height: clamp(197px, 15vw, 336px);
+    transition: all .3s;
+
+    &.bear {
+      background-image: url(images/btn-floating-bear.png);
+    }
+
+
+    &:after {
+      display: block;
+      content: '';
+      background-image: url(images/btn-floating-arrow.png);
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      width: clamp(32px, 2.5vw, 56px);
+      height: clamp(32px, 2.5vw, 56px);
+      position: absolute;
+      right: -14px;
+      bottom: 14px;
+    }
+  }
+
+  @include screen("mobile") {
+    .floating-button {
+
+      background-image: url(images/btn-floating-mo.png);
+
+      right: 0;
+      left: 0;
+      margin: auto;
+      width: 334px;
+      height: 97px;
+      bottom: -100px;
+
+      &:after {
+        display: none;
+      }
+
+      &.bear {
+        background-image: url(images/btn-floating-bear-mo.png);
+      }
+
+      &.show {
+        bottom: 20px;
+      }
+    }
+  }
+}
