@@ -12,6 +12,10 @@
     display: flex;
     align-items: center;
 
+    &.hide {
+      opacity: 0;
+    }
+
     .app-inner {
       position: relative;
       width: 100%;
@@ -133,7 +137,7 @@
     }
 
     @include screen("mobile") {
-      padding-top: 50px;
+      padding-top: 10%;
       display: block;
 
       .app-inner {
@@ -171,12 +175,13 @@
 
           &:last-child {
             position: static;
-            padding-top: 80px;
+            padding-top: 12vh;
             text-align: center;
 
             img {
               position: relative;
               z-index: 2;
+              width: clamp(200px, 60vw, 600px);
 
 
             }
@@ -190,8 +195,10 @@
       }
 
       .scrolldown {
+        // display: none;
+        // position: static;
+        // margin-top: 20px;
 
-        bottom: 30px;
       }
     }
   }
@@ -201,7 +208,7 @@
 
 @media (max-width: 375px) {
   .girlsCeleb .section1 .row .column:last-child img {
-    width: clamp(250px, 66vw, 600px);
+    // width: clamp(200px, 63vw, 600px);
   }
 
   .girlsCeleb .section1 .scrolldown {

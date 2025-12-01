@@ -398,20 +398,31 @@
       }
     };
 
-    // IntersectionObserver로 화면에 보일 때 시작
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            typeChar();
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.5 });
-      observer.observe(typingEl);
+    // 페이지가 완전히 로드된 후 IntersectionObserver로 화면에 보일 때 시작
+    const startAnimation = () => {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              typeChar();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.5 });
+        observer.observe(typingEl);
+      } else {
+        // 폴백: 바로 시작
+        setTimeout(typeChar, 500);
+      }
+    };
+
+    // 페이지가 완전히 로드된 후 0.5초 후 시작
+    if (document.readyState === 'complete') {
+      setTimeout(startAnimation, 500);
     } else {
-      // 폴백: 바로 시작
-      setTimeout(typeChar, 500);
+      window.addEventListener('load', () => {
+        setTimeout(startAnimation, 500);
+      });
     }
   };
 
@@ -555,6 +566,28 @@
       });
 
       observerSection2.observe(section2El);
+    }
+
+    // PC/모바일 공통: section3부터 section1에 hide 클래스 추가/제거
+    const section3El = document.querySelector('.section3');
+    const section1El = document.querySelector('.section1');
+
+    if (section1El && section2El && 'IntersectionObserver' in window) {
+      const observerSection2ForHide = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // section2가 보이거나 이미 지나갔으면 section1에 hide 클래스 추가
+          // section2가 보이지 않으면 section1의 hide 클래스 제거
+          if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+            section1El.classList.add('hide');
+          } else {
+            section1El.classList.remove('hide');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      observerSection2ForHide.observe(section3El);
     }
 
 
