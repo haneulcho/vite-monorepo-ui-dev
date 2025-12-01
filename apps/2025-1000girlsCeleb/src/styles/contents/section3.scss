@@ -160,7 +160,6 @@
             // height: 560px;
 
             .swiper-wrapper {
-
               display: flex;
               align-items: center;
 
@@ -171,6 +170,16 @@
                 line-height: clamp(24px, 3vw, 40px);
                 color: #333333;
                 padding: 14px;
+              }
+            }
+
+            // fade 효과를 위한 스타일
+            .swiper-slide {
+              opacity: 0 !important;
+              transition: opacity 1s ease-in-out;
+
+              &.swiper-slide-active {
+                opacity: 1 !important;
               }
             }
           }

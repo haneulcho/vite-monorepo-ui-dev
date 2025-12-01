@@ -39,8 +39,12 @@
         sec03Inited = true;
         const swiperInstance = new Swiper(sec03El, {
           loop: false,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true // 페이드 전환 시 부드러운 크로스페이드 효과
+          },
           slidesPerView: 1,
-          spaceBetween: 24,
+          spaceBetween: 0, // fade 효과를 위해서는 0이어야 함
           speed: 1000,
           autoHeight: false,
           autoplay: { delay: 5000 },

@@ -27,6 +27,7 @@
         b {
           font-weight: 600;
           position: relative;
+          font-family: 'MaruBuri';
 
           &.line {
             &:after {
@@ -35,7 +36,7 @@
               position: absolute;
               top: 60%;
               left: -10%;
-              width: clamp(140px, 2vw, 282px);
+              width: clamp(140px, 18vw, 282px);
               height: clamp(15px, 2vw, 31px);
               background-image: url(images/sec04-line.png);
               background-size: contain;
@@ -49,12 +50,10 @@
               content: '';
               display: inline-block;
               position: absolute;
-
-              bottom: -50%;
-              left: -20%;
-
-              width: clamp(140px, 2vw, 300px);
-              height: clamp(35px, 2vw, 70px);
+              bottom: -60%;
+              left: -15%;
+              width: clamp(140px, 21vw, 300px);
+              height: clamp(35px, 4.5vw, 70px);
               background-image: url(images/sec04-circle.png);
               background-size: contain;
               background-position: top center;
