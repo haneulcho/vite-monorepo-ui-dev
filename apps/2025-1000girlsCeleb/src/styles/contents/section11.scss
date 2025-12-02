@@ -149,13 +149,17 @@
               }
 
               .box {
+                display: block;
                 margin-top: 16px;
-                display: inline-flex;
-                gap: 16px;
-                flex-wrap: wrap;
-                background-color: #eef2f1;
-                border-radius: 20px;
-                padding: 44px;
+
+                .inner {
+                  display: inline-flex;
+                  background-color: #eef2f1;
+                  border-radius: 20px;
+                  gap: 16px;
+                  flex-wrap: wrap;
+                  padding: 44px;
+                }
 
                 img {
                   max-width: 100%;

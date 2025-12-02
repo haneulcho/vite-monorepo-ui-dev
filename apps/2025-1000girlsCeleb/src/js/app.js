@@ -277,8 +277,11 @@
         const observer08 = new IntersectionObserver((entries, obs) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              initSec08();
               obs.disconnect();
+              // 섹션 도달 후 0.5초 후에 슬라이드 시작
+              setTimeout(() => {
+                initSec08();
+              }, 500);
             }
           });
         }, { root: null, threshold: 0.2 });
@@ -288,8 +291,11 @@
           const rect = sec08El.getBoundingClientRect();
           const inView = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
           if (inView) {
-            initSec08();
             window.removeEventListener('scroll', onScrollCheck08);
+            // 섹션 도달 후 0.5초 후에 슬라이드 시작
+            setTimeout(() => {
+              initSec08();
+            }, 500);
           }
         });
         window.addEventListener('scroll', onScrollCheck08, { passive: true });
@@ -298,22 +304,7 @@
     }
 
 
-    // const swiper_bear = new Swiper('.swiperSec10', {
-    //   slidesPerView: 'auto',
-    //   loop: true,
-    //   slidesPerGroup: 1,
-    //   spaceBetween: 22,
-    //   centeredSlides: true,
-    //   navigation: {
-    //     nextEl: '#sec10-slide-btn-next',
-    //     prevEl: '#sec10-slide-btn-prev'
-    //   },
-    //   pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true
-    //   },
 
-    // });
 
 
 
@@ -517,11 +508,32 @@
       e.preventDefault();
       const targetSection = document.querySelector('#section2');
       if (targetSection) {
-        const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
+        const targetOffsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+        const startPosition = window.pageYOffset;
+        const distance = targetOffsetTop - startPosition;
+        const duration = 1500; // 애니메이션 지속 시간 (밀리초) - 더 느리게 조정 가능
+        let startTime = null;
+
+        const easeInOutCubic = (t) => {
+          return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        };
+
+        const animateScroll = (currentTime) => {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+          const easedProgress = easeInOutCubic(progress);
+
+          window.scrollTo(0, startPosition + distance * easedProgress);
+
+          if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+          }
+        };
+
+        requestAnimationFrame(animateScroll);
       }
     });
 
@@ -549,10 +561,59 @@
 
     // 모바일에서 section2부터 floating-button 보이기
     const section2El = document.querySelector('.section2');
+    const section3El = document.querySelector('.section3');
+    const section4El = document.querySelector('.section4');
 
     if (section2El && floatingButtonEl && 'IntersectionObserver' in window) {
+      let isSection3Visible = false;
+
+      // section3 observer: section3이 보이면 show 클래스 제거
+      if (section3El) {
+        const observerSection3 = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              isSection3Visible = true;
+              floatingButtonEl.classList.remove('show');
+            } else {
+              isSection3Visible = false;
+              // section3을 벗어났을 때 section2가 화면에 보이거나 이미 지나갔으면 show 클래스 추가
+              if (section2El) {
+                const section2Rect = section2El.getBoundingClientRect();
+                // section2가 화면에 보이거나 이미 지나갔으면
+                if (section2Rect.top < window.innerHeight && section2Rect.bottom > 0 || section2Rect.top < 0) {
+                  floatingButtonEl.classList.add('show');
+                }
+              }
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        observerSection3.observe(section3El);
+      }
+
+      // section4 observer: section4에 도달하면 show 클래스 추가
+      if (section4El) {
+        const observerSection4 = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+              floatingButtonEl.classList.add('show');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        observerSection4.observe(section4El);
+      }
+
       const observerSection2 = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+          // section3이 보이면 show 클래스 제거하고 리턴
+          if (isSection3Visible) {
+            floatingButtonEl.classList.remove('show');
+            return;
+          }
+
           // section2가 보이거나 이미 지나갔으면 show 클래스 추가
           // section2가 아직 도달하지 않았으면 show 클래스 제거
           if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
@@ -568,8 +629,9 @@
       observerSection2.observe(section2El);
     }
 
+
+
     // PC/모바일 공통: section3부터 section1에 hide 클래스 추가/제거
-    const section3El = document.querySelector('.section3');
     const section1El = document.querySelector('.section1');
 
     if (section1El && section2El && 'IntersectionObserver' in window) {
@@ -589,6 +651,8 @@
 
       observerSection2ForHide.observe(section3El);
     }
+
+
 
 
   });
