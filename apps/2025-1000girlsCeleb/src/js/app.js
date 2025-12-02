@@ -506,36 +506,76 @@
     // Scrolldown 버튼 클릭 시 다음 섹션으로 부드럽게 이동
     $('#sec01-cta02').on('click', function (e) {
       e.preventDefault();
-      const targetSection = document.querySelector('#section2');
-      if (targetSection) {
-        const targetOffsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
-        const startPosition = window.pageYOffset;
-        const distance = targetOffsetTop - startPosition;
-        const duration = 1500; // 애니메이션 지속 시간 (밀리초) - 더 느리게 조정 가능
-        let startTime = null;
-
-        const easeInOutCubic = (t) => {
-          return t < 0.5
-            ? 4 * t * t * t
-            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        };
-
-        const animateScroll = (currentTime) => {
-          if (startTime === null) startTime = currentTime;
-          const timeElapsed = currentTime - startTime;
-          const progress = Math.min(timeElapsed / duration, 1);
-          const easedProgress = easeInOutCubic(progress);
-
-          window.scrollTo(0, startPosition + distance * easedProgress);
-
-          if (progress < 1) {
-            requestAnimationFrame(animateScroll);
-          }
-        };
-
-        requestAnimationFrame(animateScroll);
-      }
+      downDevent();
     });
+
+    let isScrollingAnimation = false; // 애니메이션 진행 중 여부
+
+    function downDevent(appInnerEl) {
+      const targetSection = document.querySelector('#section2');
+      if (!targetSection || isScrollingAnimation) return; // 이미 애니메이션 진행 중이면 리턴
+
+      const targetOffsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetOffsetTop - startPosition;
+      const duration = 1500; // 애니메이션 지속 시간 (밀리초)
+      let startTime = null;
+
+      // 애니메이션 시작 - 스크롤 차단
+      isScrollingAnimation = true;
+
+      // 스크롤 차단 이벤트 핸들러
+      const preventScroll = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      };
+
+      // 키보드 스크롤 차단 핸들러 (방향키, 스페이스바, Page Up/Down 등)
+      const preventKeyScroll = (e) => {
+        const scrollKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40]; // 스페이스, Page Up/Down, Home, End, 방향키
+        if (scrollKeys.includes(e.keyCode)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
+
+      // 스크롤 차단 이벤트 리스너 등록 (overflow: hidden 없이 - sticky 동작 유지)
+      window.addEventListener('wheel', preventScroll, { passive: false });
+      window.addEventListener('touchmove', preventScroll, { passive: false });
+      window.addEventListener('keydown', preventKeyScroll, { passive: false });
+
+      const easeInOutCubic = (t) => {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animateScroll = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+
+        window.scrollTo(0, startPosition + distance * easedProgress);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          // 애니메이션 완료 - 스크롤 차단 해제
+          isScrollingAnimation = false;
+          window.removeEventListener('wheel', preventScroll);
+          window.removeEventListener('touchmove', preventScroll);
+          window.removeEventListener('keydown', preventKeyScroll);
+
+          // .app-inner scrollTop을 0으로 초기화
+          if (appInnerEl) {
+            appInnerEl.scrollTop = 0;
+          }
+        }
+      };
+
+      requestAnimationFrame(animateScroll);
+    }
 
     // section6 도달 시 floating-button에 bear 클래스 추가
     const section6El = document.querySelector('.section6');
@@ -631,29 +671,40 @@
 
 
 
-    // PC/모바일 공통: section3부터 section1에 hide 클래스 추가/제거
     const section1El = document.querySelector('.section1');
 
-    if (section1El && section2El && 'IntersectionObserver' in window) {
-      const observerSection2ForHide = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          // section2가 보이거나 이미 지나갔으면 section1에 hide 클래스 추가
-          // section2가 보이지 않으면 section1의 hide 클래스 제거
-          if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
-            section1El.classList.add('hide');
-          } else {
-            section1El.classList.remove('hide');
+
+
+
+    // 모바일에서 .app-inner 스크롤이 맨 하단에 도달하면 section2로 부드럽게 스크롤 애니메이션 실행
+    if (section1El && isMobile()) {
+      const appInnerEl = section1El.querySelector('.app-inner');
+
+      if (appInnerEl) {
+        let lastAnimationTime = 0; // 마지막 애니메이션 실행 시간
+        const ANIMATION_COOLDOWN = 2000; // 2초 쿨타임 (중복 실행 방지)
+
+        const checkAppInnerScroll = () => {
+          const scrollTop = appInnerEl.scrollTop;
+          const scrollHeight = appInnerEl.scrollHeight;
+          const clientHeight = appInnerEl.clientHeight;
+          const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+          const now = Date.now();
+
+          // 스크롤이 하단에 도달했을 때 애니메이션 실행 (쿨타임 고려)
+          if (isAtBottom && (now - lastAnimationTime) > ANIMATION_COOLDOWN) {
+            lastAnimationTime = now;
+            downDevent(appInnerEl);
           }
-        });
-      }, {
-        threshold: 0.1
-      });
+        };
 
-      observerSection2ForHide.observe(section3El);
+        // 스크롤 이벤트 리스너 등록
+        appInnerEl.addEventListener('scroll', withRaf(checkAppInnerScroll), { passive: true });
+
+        // 초기 체크 (컨텐츠가 이미 스크롤 불필요한 경우)
+        checkAppInnerScroll();
+      }
     }
-
-
-
 
   });
 })();

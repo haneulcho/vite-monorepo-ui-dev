@@ -1,3 +1,8 @@
+// html {
+//   overscroll-behavior: none; // 스크롤 바운스 효과 제거 (앱 전체)
+//   -webkit-overflow-scrolling: touch; // iOS 부드러운 스크롤 (앱 전체)
+// }
+
 .#{$app-name} {
   font-size: $base-font-size;
   min-width: $min-width;
@@ -8,6 +13,7 @@
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-style: -ms-autohiding-scrollbar;
+
 
   *,
   *::before,

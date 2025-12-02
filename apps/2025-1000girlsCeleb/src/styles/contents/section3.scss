@@ -33,6 +33,8 @@
     }
 
     .row {
+      transition: top 0.3s ease;
+
       .column {
         &:first-child {
           position: relative;
@@ -212,6 +214,8 @@
       padding-bottom: 360px;
       overflow: visible;
 
+
+
       .deco {
         &.pen {
           display: none;
@@ -239,8 +243,8 @@
             .shorts {
               // width: clamp(320px, 80vw, 500px);
               // height: clamp(320px, 80vw, 500px);
-              width: 320px;
-              height: 320px;
+              width: 321px;
+              height: 321px;
               aspect-ratio: unset;
 
               .letter {
@@ -254,6 +258,20 @@
       }
 
     }
+  }
+}
+
+@include screen("mobile") {
+  .scroll_up {
+    .#{$app-name} {
+      .section3 {
+        .row {
+          top: 72px;
+
+        }
+      }
+    }
+
   }
 }
 

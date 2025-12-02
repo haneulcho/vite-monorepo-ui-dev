@@ -135,11 +135,27 @@
     }
 
     @include screen("mobile") {
-      padding-top: 10%;
+      padding-top: 0%;
+      padding-bottom: 0%;
+      min-height: inherit;
       display: block;
 
+
+
       .app-inner {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        overflow: scroll;
+        height: calc(100vh - 52px);
         max-width: 100%;
+        scrollbar-width: none; // Firefox
+        -ms-overflow-style: none; // IE, Edge
+        -webkit-overflow-scrolling: touch; // iOS 부드러운 스크롤
+
+        &::-webkit-scrollbar {
+          display: none; // Chrome, Safari, Opera
+        }
+
       }
 
       .row {
@@ -159,7 +175,7 @@
               z-index: 1;
               margin-bottom: 30px;
               position: absolute;
-              top: 0;
+              top: 52px;
               left: 0;
               display: flex;
               flex-direction: column;
@@ -192,13 +208,13 @@
 
           &:last-child {
             position: static;
-            padding-top: 12vh;
+            padding-top: 14vh;
             text-align: center;
 
             img {
               position: relative;
               z-index: 2;
-              width: clamp(200px, 60vw, 600px);
+              // width: clamp(200px, 60vw, 600px);
 
 
             }
@@ -208,15 +224,13 @@
 
       .copy {
         padding: 0 20px;
-        top: -25px;
+        top: 25px;
         width: 100%;
       }
 
       .scrolldown {
-        // display: none;
-        // position: static;
-        // margin-top: 20px;
-
+        position: static;
+        margin-top: 30px;
       }
     }
   }
@@ -230,6 +244,6 @@
   }
 
   .girlsCeleb .section1 .scrolldown {
-    display: none;
+    // display: none;
   }
 }

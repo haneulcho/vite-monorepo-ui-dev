@@ -29,6 +29,15 @@
     @include screen("mobile") {
       padding-top: 5%;
       padding-bottom: 15%;
+
+      .app-inner {
+        text-align: center;
+        padding: 0;
+
+        .btn {
+          margin-top: 0;
+        }
+      }
     }
   }
 }
