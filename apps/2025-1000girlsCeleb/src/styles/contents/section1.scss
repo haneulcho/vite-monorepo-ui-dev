@@ -5,8 +5,8 @@
     background-position: top center;
     background-repeat: no-repeat;
     padding-top: clamp(10%, 2vw, 100px);
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
     z-index: 0;
     min-height: 100vh;
     display: flex;
@@ -110,7 +110,7 @@
     }
 
     .scrolldown {
-      position: fixed;
+      position: absolute;
       z-index: 1;
       left: 0;
       right: 0;
@@ -145,12 +145,12 @@
       .app-inner {
         padding-top: 10%;
         padding-bottom: 10%;
-        overflow: scroll;
-        height: calc(100vh - 52px);
-        max-width: 100%;
-        scrollbar-width: none; // Firefox
-        -ms-overflow-style: none; // IE, Edge
-        -webkit-overflow-scrolling: touch; // iOS 부드러운 스크롤
+        // overflow: scroll;
+        // height: calc(100vh - 52px);
+        // max-width: 100%;
+        // scrollbar-width: none; // Firefox
+        // -ms-overflow-style: none; // IE, Edge
+        // -webkit-overflow-scrolling: touch; // iOS 부드러운 스크롤
 
         &::-webkit-scrollbar {
           display: none; // Chrome, Safari, Opera

@@ -78,8 +78,11 @@
     display: block;
     width: clamp(300px, 40vw, 575px);
     position: relative;
+    transition: all .3s;
 
     &:hover {
+      transform: scale(1.06);
+
       &:after {
         transform: scale(1.07);
       }

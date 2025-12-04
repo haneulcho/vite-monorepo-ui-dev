@@ -37,17 +37,21 @@
         const sec03El = document.querySelector('.swiperSec03');
         if (!sec03El) return;
         sec03Inited = true;
+
+        // 원본 슬라이드 개수 저장 (loop 모드에서도 정확한 총 개수 사용)
+        const totalSlides = sec03El.querySelectorAll('.swiper-wrapper > .swiper-slide').length;
+
         const swiperInstance = new Swiper(sec03El, {
-          loop: false,
+          loop: true,
           effect: 'fade',
           fadeEffect: {
             crossFade: true // 페이드 전환 시 부드러운 크로스페이드 효과
           },
           slidesPerView: 1,
           spaceBetween: 0, // fade 효과를 위해서는 0이어야 함
-          speed: 1000,
+          speed: 500,
           autoHeight: false,
-          autoplay: { delay: 5000 },
+          autoplay: { delay: 4000 },
           navigation: {
             nextEl: '.swiperSec03-next',
             prevEl: '.swiperSec03-prev',
@@ -56,12 +60,12 @@
             init: function () {
               const currentEl = sec03El.querySelector('.swiperSec03-current');
               const totalEl = sec03El.querySelector('.swiperSec03-total');
-              if (currentEl) currentEl.textContent = this.activeIndex + 1;
-              if (totalEl) totalEl.textContent = this.slides.length;
+              if (currentEl) currentEl.textContent = this.realIndex + 1;
+              if (totalEl) totalEl.textContent = totalSlides;
             },
             slideChange: function () {
               const currentEl = sec03El.querySelector('.swiperSec03-current');
-              if (currentEl) currentEl.textContent = this.activeIndex + 1;
+              if (currentEl) currentEl.textContent = this.realIndex + 1;
             }
           }
         });
@@ -104,6 +108,16 @@
         const totalSlides = 11;
         let thumbnailStartIndex = 0; // 썸네일 시작 인덱스
 
+        // 원본 슬라이드 이미지 소스를 배열로 저장 (loop 모드에서도 정확한 이미지 사용)
+        const slideImages = [];
+        const originalSlides = sec07El.querySelectorAll('.swiper-wrapper > .swiper-slide');
+        originalSlides.forEach((slide) => {
+          const img = slide.querySelector('img');
+          if (img) {
+            slideImages.push(img.src);
+          }
+        });
+
         // 썸네일 업데이트 함수
         const updateThumbnails = (startIndex, currentSlideIndex) => {
           const thumbnails = document.querySelectorAll('.section7 .thumbnail-item');
@@ -112,7 +126,7 @@
 
           thumbnails.forEach((thumb, index) => {
             const thumbnailIndex = (startIndex + index) % totalSlides;
-            const slideImg = sec07El.querySelectorAll('.swiper-slide')[thumbnailIndex]?.querySelector('img')?.src;
+            const slideImg = slideImages[thumbnailIndex];
 
             if (slideImg) {
               thumb.querySelector('img').src = slideImg;
@@ -253,23 +267,64 @@
         }
 
         // marquee 스타일 흐름 (자연스러운 무한 루프)
-        new Swiper(sec08El, {
+        const swiperInstance = new Swiper(sec08El, {
           loop: true,
           slidesPerView: 'auto',
           spaceBetween: 46,
-          allowTouchMove: false,
+          allowTouchMove: true, // 마우스/터치 드래그 활성화
           speed: 6000, // 속도 조정 (더 자연스럽게)
           freeMode: {
-            enabled: false,
-            momentum: false,
+            enabled: true,
+            momentum: true,
           },
           autoplay: {
             delay: 0,
             disableOnInteraction: false,
+            // pauseOnMouseEnter: false, // 마우스 오버 시 일시정지
           },
           watchSlidesProgress: true,
           preloadImages: true,
           loopAdditionalSlides: 6, // 루프를 위한 추가 슬라이드 수 증가
+          on: {
+            sliderFirstMove: function () {
+              // 드래그 시작 시 (마우스/터치 모두) autoplay 일시정지
+              // this.autoplay.stop();
+            },
+            touchEnd: function () {
+              // 터치 드래그 종료 후 autoplay 재개
+              // this.autoplay.start();
+            },
+            setTransition: function () {
+              // 전환 시작 시 autoplay 재개 (드래그 종료 후)
+              if (!this.autoplay.running) {
+                // this.autoplay.start();
+              }
+            },
+          }
+        });
+
+        // 마우스 드래그 종료 감지를 위한 추가 이벤트 리스너
+        let isDragging = false;
+        sec08El.addEventListener('mousedown', () => {
+          isDragging = true;
+        });
+        sec08El.addEventListener('mouseup', () => {
+          if (isDragging) {
+            isDragging = false;
+            // 마우스 드래그 종료 후 autoplay 재개
+            if (!swiperInstance.autoplay.running) {
+              swiperInstance.autoplay.start();
+            }
+          }
+        });
+        sec08El.addEventListener('mouseleave', () => {
+          if (isDragging) {
+            isDragging = false;
+            // 마우스가 영역을 벗어나면 autoplay 재개
+            if (!swiperInstance.autoplay.running) {
+              swiperInstance.autoplay.start();
+            }
+          }
         });
       };
 
@@ -281,7 +336,7 @@
               // 섹션 도달 후 0.5초 후에 슬라이드 시작
               setTimeout(() => {
                 initSec08();
-              }, 500);
+              }, 100);
             }
           });
         }, { root: null, threshold: 0.2 });
@@ -677,34 +732,34 @@
 
 
     // 모바일에서 .app-inner 스크롤이 맨 하단에 도달하면 section2로 부드럽게 스크롤 애니메이션 실행
-    if (section1El && isMobile()) {
-      const appInnerEl = section1El.querySelector('.app-inner');
+    // if (section1El && isMobile()) {
+    //   const appInnerEl = section1El.querySelector('.app-inner');
 
-      if (appInnerEl) {
-        let lastAnimationTime = 0; // 마지막 애니메이션 실행 시간
-        const ANIMATION_COOLDOWN = 2000; // 2초 쿨타임 (중복 실행 방지)
+    //   if (appInnerEl) {
+    //     let lastAnimationTime = 0; // 마지막 애니메이션 실행 시간
+    //     const ANIMATION_COOLDOWN = 2000; // 2초 쿨타임 (중복 실행 방지)
 
-        const checkAppInnerScroll = () => {
-          const scrollTop = appInnerEl.scrollTop;
-          const scrollHeight = appInnerEl.scrollHeight;
-          const clientHeight = appInnerEl.clientHeight;
-          const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
-          const now = Date.now();
+    //     const checkAppInnerScroll = () => {
+    //       const scrollTop = appInnerEl.scrollTop;
+    //       const scrollHeight = appInnerEl.scrollHeight;
+    //       const clientHeight = appInnerEl.clientHeight;
+    //       const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+    //       const now = Date.now();
 
-          // 스크롤이 하단에 도달했을 때 애니메이션 실행 (쿨타임 고려)
-          if (isAtBottom && (now - lastAnimationTime) > ANIMATION_COOLDOWN) {
-            lastAnimationTime = now;
-            downDevent(appInnerEl);
-          }
-        };
+    //       // 스크롤이 하단에 도달했을 때 애니메이션 실행 (쿨타임 고려)
+    //       if (isAtBottom && (now - lastAnimationTime) > ANIMATION_COOLDOWN) {
+    //         lastAnimationTime = now;
+    //         downDevent(appInnerEl);
+    //       }
+    //     };
 
-        // 스크롤 이벤트 리스너 등록
-        appInnerEl.addEventListener('scroll', withRaf(checkAppInnerScroll), { passive: true });
+    //     // 스크롤 이벤트 리스너 등록
+    //     appInnerEl.addEventListener('scroll', withRaf(checkAppInnerScroll), { passive: true });
 
-        // 초기 체크 (컨텐츠가 이미 스크롤 불필요한 경우)
-        checkAppInnerScroll();
-      }
-    }
+    //     // 초기 체크 (컨텐츠가 이미 스크롤 불필요한 경우)
+    //     checkAppInnerScroll();
+    //   }
+    // }
 
   });
 })();
