@@ -1,0 +1,70 @@
+.#{$app-name} {
+  .section5 {
+    background-image: url(images/sec05-bg.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: 150px;
+    padding-bottom: 220px;
+
+    h3 {
+      width: clamp(324px, 40vw, 763px);
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .btn {
+      margin-left: clamp(12px, 5vw, 66px);
+      margin-bottom: clamp(30px, 10vw, 120px);
+    }
+
+    p {
+      color: #fff;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      line-height: clamp(19px, 3vw, 28px);
+
+      img {
+        margin-left: 6px;
+        margin-right: 0px;
+        margin-top: 4px;
+        width: clamp(84px, 15vw, 125px);
+      }
+    }
+
+
+    @include screen("mobile") {
+
+      background-image: none;
+      background-color: #c1b3a3;
+      padding-top: 0%;
+      padding-bottom: 15%;
+
+      .app-inner {
+        text-align: center;
+        margin-top: -120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+
+
+      p {
+        text-align: left;
+        margin-top: 20px;
+
+        br {
+          display: none;
+        }
+
+        img {
+          margin-top: 0px;
+          width: 72px;
+        }
+      }
+
+    }
+  }
+}

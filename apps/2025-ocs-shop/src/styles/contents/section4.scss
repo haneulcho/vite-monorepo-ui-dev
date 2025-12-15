@@ -1,0 +1,78 @@
+.#{$app-name} {
+  .section4 {
+    margin-top: -240px;
+    position: relative;
+    z-index: 2;
+
+    img {
+      width: 100%;
+    }
+
+    .copy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+
+      p {
+        text-align: center;
+        font-size: clamp(1.6rem, 2vw, 2.9rem);
+        line-height: clamp(26px, 3vw, 52px);
+        color: #fff;
+        font-family: 'MaruBuri';
+        font-weight: 400;
+
+        b {
+          font-weight: 600;
+          position: relative;
+          font-family: 'MaruBuri';
+
+          &.line {
+            &:after {
+              content: '';
+              display: inline-block;
+              position: absolute;
+              top: 60%;
+              left: -10%;
+              width: clamp(140px, 18vw, 282px);
+              height: clamp(15px, 2vw, 31px);
+              background-image: url(images/sec04-line.png);
+              background-size: contain;
+              background-position: bottom center;
+              background-repeat: no-repeat;
+            }
+          }
+
+          &.circle {
+            &:after {
+              content: '';
+              display: inline-block;
+              position: absolute;
+              bottom: -60%;
+              left: -15%;
+              width: clamp(140px, 21vw, 300px);
+              height: clamp(35px, 4.5vw, 70px);
+              background-image: url(images/sec04-circle.png);
+              background-size: contain;
+              background-position: top center;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+
+
+        &+p {
+          margin-top: clamp(24px, 2vw, 66px);
+        }
+      }
+    }
+
+
+
+
+
+    @include screen("mobile") {}
+  }
+}

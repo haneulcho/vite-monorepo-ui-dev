@@ -1,0 +1,188 @@
+.#{$app-name} {
+  .section10 {
+    background-color: #eee7e1;
+    padding-top: 90px;
+    padding-bottom: 100px;
+    overflow: hidden;
+
+    h3 {
+      margin-bottom: clamp(36px, 20vw, 60px);
+    }
+
+    .swiperSec10 {
+      position: relative;
+
+      &.swiperSec10-pc {
+        .swiper-slide {
+          width: 375px !important;
+
+          &.swiper-slide-active {
+            margin: 0 43px 0 21px !important;
+          }
+        }
+      }
+
+      &.swiperSec10-mo {
+
+
+        .swiper-slide {
+          width: 294px !important;
+
+          &.swiper-slide-active {
+            // margin: 0 21px !important;
+          }
+
+          .cont {
+            .img {
+              img {
+                border-radius: 8px;
+              }
+            }
+          }
+        }
+      }
+
+      .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .swiper-slide {
+
+
+        &.swiper-slide-active {
+          .cont {
+            .img {
+              transform: scale(1.1) !important;
+            }
+
+            .inner {
+
+              .info {
+                p {
+                  font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+                }
+              }
+            }
+          }
+
+
+          z-index: 2;
+
+        }
+
+        &.swiper-slide-prev,
+        &.swiper-slide-next {
+          opacity: 0.8;
+        }
+
+        .cont {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          position: relative;
+
+          .img {
+            width: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            transform-origin: center;
+
+            img {
+              width: 100%;
+              height: auto;
+              display: block;
+              object-fit: cover;
+            }
+          }
+
+          .inner {
+            position: absolute;
+            bottom: clamp(40px, 5vw, 50px);
+            left: clamp(40px, 3vw, 49px);
+
+            .info {
+              h3 {
+                font-family: "MaruBuri";
+                color: #fff;
+                font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+                font-weight: bold;
+                line-height: 1;
+                margin-bottom: 16px;
+                font-weight: 700;
+              }
+
+              p {
+                color: #fff;
+                font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+                line-height: clamp(22px, 3vw, 30px);
+              }
+            }
+          }
+        }
+      }
+
+      .swiper-buttons {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        pointer-events: none;
+        z-index: 10;
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          position: relative;
+          width: 48px;
+          height: 48px;
+          margin: 0;
+          background: none;
+          border: none;
+          cursor: pointer;
+          pointer-events: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.7;
+          transition: opacity 0.3s ease;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/sec10-arrow.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+
+        .swiper-button-prev {
+
+          &::after {
+            transform: rotate(180deg);
+          }
+        }
+
+
+      }
+
+
+    }
+
+    @include screen("mobile") {}
+  }
+}

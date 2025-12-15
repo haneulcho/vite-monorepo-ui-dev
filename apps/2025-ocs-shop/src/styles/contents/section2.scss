@@ -1,0 +1,50 @@
+.#{$app-name} {
+  .section2 {
+    background-image: url(images/sec02-bg.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: clamp(5%, 2vw, 30px);
+    text-align: center;
+
+    .copy {
+      position: absolute;
+      bottom: clamp(20%, 8vw, 30%);
+      left: 0;
+      right: 0;
+      padding: 0 40px;
+    }
+
+    p {
+
+
+      text-align: center;
+      font-size: clamp(1.6rem, 2vw, 3.2rem);
+      line-height: clamp(30px, 3vw, 55px);
+      color: #fff;
+      font-family: 'MaruBuri';
+      font-weight: 600;
+    }
+
+
+
+    @include screen("mobile") {
+
+      .copy {
+        position: absolute;
+        bottom: clamp(20%, 8vw, 30%);
+        left: 0;
+        right: 0;
+      }
+
+      p {
+        text-align: left;
+
+        &+p {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}

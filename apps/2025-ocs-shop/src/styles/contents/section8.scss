@@ -1,0 +1,76 @@
+.#{$app-name} {
+  .section8 {
+    background-color: #fff;
+    padding: 80px;
+
+    .row {
+      gap: clamp(30px, 5vw, 100px);
+
+      .column {
+        &:first-child {
+          img {
+            width: clamp(180px, 20vw, 400px);
+          }
+        }
+
+        &+.column {
+          overflow: hidden;
+          flex: 1;
+        }
+      }
+    }
+
+    .swiperSec08 {
+      width: 100%;
+
+      .swiper-wrapper {
+        -webkit-transition-timing-function: linear !important;
+        -o-transition-timing-function: linear !important;
+        transition-timing-function: linear !important;
+        height: auto;
+      }
+
+      .swiper-slide {
+        width: fit-content;
+
+        img {
+          width: auto;
+          height: auto;
+          display: block;
+        }
+      }
+    }
+
+
+    @include screen("mobile") {
+      padding: 10% 0;
+
+      .row {
+        flex-direction: column;
+        gap: 30px;
+
+        .column {
+
+          &:first-child {
+            padding: 0 20px;
+
+            img {
+              width: clamp(210px, 25vw, 400px);
+            }
+          }
+        }
+      }
+
+      .swiperSec08 {
+
+        .swiper-slide {
+          img {
+            width: auto !important;
+            height: 400px;
+          }
+        }
+      }
+
+    }
+  }
+}

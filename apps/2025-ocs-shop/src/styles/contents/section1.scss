@@ -1,0 +1,241 @@
+.#{$app-name} {
+  .section1 {
+    background-image: url(images/sec01-bg.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: clamp(10%, 2vw, 100px);
+    // position: sticky;
+    // top: 0;
+    z-index: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: end;
+
+    &.hide {
+      opacity: 0;
+    }
+
+    .app-inner {
+      position: relative;
+      width: 100%;
+      // min-height: 1060px;
+      max-width: 1380px;
+    }
+
+    .row {
+      justify-content: end;
+
+      .column {
+        &:first-child {
+          flex: 1;
+          position: absolute;
+          left: 60px;
+          z-index: 1;
+
+          .headline {
+
+            margin-bottom: 30px;
+
+            h2 {
+              line-height: 1;
+              color: #033e45;
+
+              span {
+                display: flex;
+                align-items: center;
+                font-family: 'SeongdongMyoungjo';
+                font-weight: 400;
+                font-size: clamp(3.6rem, 6vw, 8.7rem);
+                gap: clamp(14px, 3vw, 60px);
+                margin-bottom: 10px;
+
+                &::after {
+                  content: '';
+                  height: 2px;
+                  width: clamp(66px, 8vw, 136px);
+                  display: block;
+                  background-color: #033e45;
+                }
+              }
+
+              .typing {
+                font-family: 'SeongdongMyoungjo';
+                font-weight: 700;
+                font-size: clamp(3.9rem, 6vw, 9.2rem);
+                position: relative;
+                min-height: 1.2em;
+
+                &::after {
+                  content: '|';
+                  display: inline-block;
+                  animation: blink 1s infinite;
+                  margin-left: 2px;
+                }
+              }
+
+
+            }
+
+
+
+          }
+
+          p {
+            max-width: clamp(300px, 40vw, 660px);
+            margin-bottom: clamp(60px, 10vw, 110px);
+
+            img {
+              width: 100%;
+            }
+          }
+
+
+        }
+
+        &:last-child {
+
+          flex: none;
+          position: relative;
+          right: -60px;
+        }
+      }
+    }
+
+    .copy {
+      position: absolute;
+      top: -83px;
+      left: 0;
+      width: clamp(600px, 66vw, 1019px);
+    }
+
+    .scrolldown {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      bottom: clamp(30px, 4vw, 60px);
+      margin: auto;
+      display: block;
+      width: clamp(16px, 2vw, 33px);
+      height: clamp(30px, 4vw, 60px);
+      text-align: center;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+    }
+
+    @include screen("mobile") {
+      padding-top: 0%;
+      padding-bottom: 0%;
+      min-height: inherit;
+      display: block;
+
+
+
+      .app-inner {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        // overflow: scroll;
+        // height: calc(100vh - 52px);
+        // max-width: 100%;
+        // scrollbar-width: none; // Firefox
+        // -ms-overflow-style: none; // IE, Edge
+        // -webkit-overflow-scrolling: touch; // iOS 부드러운 스크롤
+
+        &::-webkit-scrollbar {
+          display: none; // Chrome, Safari, Opera
+        }
+
+      }
+
+      .row {
+        justify-content: center;
+        flex-direction: column-reverse;
+
+        .column {
+
+
+          &:first-child {
+            position: static;
+            margin-top: -60px;
+
+
+            .headline {
+              width: 100%;
+              z-index: 1;
+              margin-bottom: 30px;
+              position: absolute;
+              top: 52px;
+              left: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              h2 {
+
+
+                span {
+                  font-size: clamp(3.6rem, 10vw, 4.4rem);
+                }
+
+                .typing {
+                  font-size: clamp(3.9rem, 10.5vw, 6rem);
+                }
+              }
+            }
+
+            p {
+              margin: auto;
+            }
+
+            .btn {
+              margin: 44px auto auto;
+            }
+
+
+
+          }
+
+          &:last-child {
+            position: static;
+            padding-top: 14vh;
+            text-align: center;
+
+            img {
+              position: relative;
+              z-index: 2;
+              // width: clamp(200px, 60vw, 600px);
+
+
+            }
+          }
+        }
+      }
+
+      .copy {
+        padding: 0 20px;
+        top: 25px;
+        width: 100%;
+      }
+
+      .scrolldown {
+        position: static;
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: 375px) {}
