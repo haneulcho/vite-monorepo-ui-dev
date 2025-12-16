@@ -2,43 +2,91 @@
 
   * {
     font-family: $base-font-system;
+
   }
 
   position: relative;
   margin: 0 auto;
   min-width: $min-width;
-
+  color: #000;
 
   .swiper-pagination {
-    position: static;
-    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px;
-    margin-top: 47px;
+    position: static;
 
-    .swiper-pagination-bullet-active {
-      background-color: #987440 !important;
+    &.bk {
+
+      .swiper-button-prev,
+      .swiper-button-next {
+
+        &::after {
+          background-image: url('/images/slide-arrows-bk.png');
+          background-size: contain;
+        }
+      }
+
+      .pagination-inner {
+        color: #222;
+      }
+
     }
 
-    .swiper-pagination-bullet {
-      transition: all 0.4s;
-      opacity: 1;
-      width: 23px;
-      height: 8px;
-      border-radius: 100px;
-      background-color: #d4c7b5;
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: relative;
+      width: 10px;
+      height: 20px;
+      margin: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 20px;
+        background-image: url('/images/slide-arrows.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .swiper-button-prev {
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    .pagination-inner {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 500;
+      margin: 0 20px;
     }
   }
+
+
+
+
 
   .app-section {
     overflow: hidden;
     max-width: 100%;
     margin: 0 auto;
     position: relative;
-    background-color: #fff; // 이미지 로딩 전 깜빡임 방지
-    z-index: 2;
+    background-color: #fff;
   }
 
   .app-inner {
@@ -59,32 +107,46 @@
 
   }
 
-  .basic-title {
-    font-family: 'SeongdongMyoungjo';
-    font-weight: 400;
-    font-size: clamp(2.6rem, 5vw, 5.7rem);
-    line-height: clamp(34px, 6vw, 73px);
-    color: #033e45;
-    text-align: center;
+  .headline {
+    h2 {
+      font-size: clamp(2.5rem, 3vw, 3.5rem);
+      line-height: 1;
+      font-weight: 600;
+    }
 
-    em {
-      font-family: 'SeongdongMyoungjo';
+    h3 {
+      font-size: clamp(2.1rem, 3vw, 2.5rem);
+      line-height: 1;
+      font-weight: 600;
+    }
+
+    span {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1;
       font-weight: 400;
-      color: #15747f;
+      color: #555;
+      margin-top: clamp(15px, 1.5vw, 25px);
     }
   }
 
   .btn {
     display: block;
-    width: clamp(300px, 40vw, 575px);
+    width: 194px;
     position: relative;
     transition: all .3s;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 27px;
+    padding: 12px 26px;
+    border: 1px solid #000;
+
 
     &:hover {
       transform: scale(1.06);
 
       &:after {
-        transform: scale(1.07);
+        right: 20px;
       }
     }
 
@@ -92,69 +154,49 @@
       content: '';
       display: block;
       position: absolute;
-      left: -20px;
+      right: 26px;
       top: 0;
       bottom: 0;
       margin: auto;
-      width: clamp(97px, 15vw, 187px);
-      height: clamp(110px, 15vw, 218px);
-      background-image: url(images/ico-btnBear.png);
+      width: 6px;
+      height: 11px;
+      background-image: url(images/btn-arrows.png);
       background-size: contain;
       background-position: top center;
       background-repeat: no-repeat;
       transition: all .3s;
     }
 
-    img {
-      width: 100%;
-    }
-  }
+    &.white {
+      border-color: #fff;
+      color: #fff;
 
-  @include screen("mobile") {
-    .btn {
       &:after {
-        left: -13px;
+        background-image: url(images/btn-arrows-white.png);
       }
-
     }
   }
 
-  // .btn {
-  //   position: relative;
-  //   width: 560px;
-  //   height: 140px;
+  @include screen("mobile") {}
 
-  //   span {
-  //     display: block;
-  //     width: 548px;
-  //     height: 114px;
-  //     background-image: url(images/btn-emboss.png);
-  //     background-size: cover;
-  //     background-position: top center;
-  //     background-repeat: no-repeat;
-  //     position: absolute;
-  //     border-radius: 1000px;
-  //     left: 0;
-  //     right: 0;
-  //     bottom: 0;
-  //     top: 0;
-  //     margin: auto;
-  //     z-index: 2;
-  //   }
+}
 
-  //   &:after {
-  //     content: '';
-  //     width: 100%;
-  //     height: 100%;
-  //     border-radius: 1000px;
-  //     position: absolute;
-  //     left: 0;
-  //     right: 0;
-  //     bottom: 0;
-  //     top: 0;
-  //     margin: auto;
-  //     background-color: red;
+@media (max-width: 1440px) {
+  .#{$app-name} {
+    .app-inner {
+      max-width: 1024px !important;
+    }
+  }
 
-  //   }
-  // }
+  .ocs-shop .section2 .row {
+    align-items: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .#{$app-name} {
+    .app-inner {
+      max-width: 960px !important;
+    }
+  }
 }

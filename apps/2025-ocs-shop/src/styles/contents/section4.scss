@@ -1,78 +1,156 @@
 .#{$app-name} {
   .section4 {
-    margin-top: -240px;
-    position: relative;
-    z-index: 2;
+    background-color: #FCF9F4;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 35px;
 
-    img {
-      width: 100%;
+
+    .headline {
+      margin-bottom: clamp(25px, 3vw, 30px);
     }
 
-    .copy {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 100%;
+    .list-products {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(16px, 3vw, 30px);
 
-      p {
-        text-align: center;
-        font-size: clamp(1.6rem, 2vw, 2.9rem);
-        line-height: clamp(26px, 3vw, 52px);
-        color: #fff;
-        font-family: 'MaruBuri';
-        font-weight: 400;
+        .product-item {
+          flex: none;
+          width: calc(100% / 4 - 23px);
 
-        b {
-          font-weight: 600;
-          position: relative;
-          font-family: 'MaruBuri';
+          a {
+            display: block;
+            width: 100%;
+            height: 100%;
 
-          &.line {
-            &:after {
-              content: '';
-              display: inline-block;
-              position: absolute;
-              top: 60%;
-              left: -10%;
-              width: clamp(140px, 18vw, 282px);
-              height: clamp(15px, 2vw, 31px);
-              background-image: url(images/sec04-line.png);
-              background-size: contain;
-              background-position: bottom center;
-              background-repeat: no-repeat;
+            .img {
+              position: relative;
+              background-color: #F8F1E5;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 40px;
+              aspect-ratio: 1 / 1;
+
+              img {
+                width: 100%;
+                transition: all .3s;
+              }
+
+              &:hover {
+                img {
+                  transform: scale(1.05);
+                }
+              }
+            }
+
+            .info {
+              margin-top: clamp(16px, 3vw, 20px);
+
+              .name {
+                font-size: clamp(1.6rem, 3vw, 1.8rem);
+                line-height: clamp(25px, 3vw, 28px);
+                font-weight: 400;
+              }
+
+              .price {
+                display: flex;
+                gap: 6px;
+                align-items: center;
+                font-size: 1.8rem;
+                font-weight: 500;
+                line-height: 25px;
+                margin-top: clamp(10px, 3vw, 12px);
+                margin-bottom: clamp(10px, 3vw, 12px);
+
+                b {
+                  font-weight: 700;
+                }
+              }
+
+              .tag {
+                color: #555;
+                font-size: 1.4rem;
+                font-weight: 400;
+                line-height: 25px;
+              }
             }
           }
 
-          &.circle {
-            &:after {
-              content: '';
-              display: inline-block;
-              position: absolute;
-              bottom: -60%;
-              left: -15%;
-              width: clamp(140px, 21vw, 300px);
-              height: clamp(35px, 4.5vw, 70px);
-              background-image: url(images/sec04-circle.png);
-              background-size: contain;
-              background-position: top center;
-              background-repeat: no-repeat;
+          &.close {
+            * {
+              color: #aaa;
+            }
+
+            a {
+              pointer-events: none;
+              cursor: default;
+
+              .img {
+                img {
+                  opacity: 0.5;
+                }
+
+                &:after {
+                  content: '종료';
+                  color: #68635A;
+                  background-color: #DED3C0;
+                  text-align: center;
+                  font-family: Pretendard;
+                  font-size: clamp(1.4rem, 3vw, 2.1rem);
+                  font-style: normal;
+                  font-weight: 700;
+                  line-height: clamp(50px, 6vw, 78px);
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 100%;
+                  z-index: 2;
+                }
+              }
             }
           }
-        }
-
-
-        &+p {
-          margin-top: clamp(24px, 2vw, 66px);
         }
       }
     }
 
+    .caption {
+      display: block;
+      color: #555;
+      font-size: clamp(1.4rem, 3vw, 1.6rem);
+      font-weight: 400;
+      line-height: 23px;
+      margin-top: 25px;
+      text-align: center;
+
+    }
+
+    @include screen("mobile") {
 
 
+      .list-products {
+        ul {
+          margin-left: 4px;
+
+          .product-item {
+            width: calc(100% / 2 - 11px);
 
 
-    @include screen("mobile") {}
+            a {
+
+              .img {
+                padding: 30px;
+              }
+
+            }
+
+
+          }
+        }
+      }
+
+    }
   }
 }

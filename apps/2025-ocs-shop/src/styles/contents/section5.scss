@@ -1,70 +1,97 @@
 .#{$app-name} {
   .section5 {
-    background-image: url(images/sec05-bg.jpg);
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    padding-top: 150px;
-    padding-bottom: 220px;
+    .row {
+      height: 100%;
 
-    h3 {
-      width: clamp(324px, 40vw, 763px);
+      .column {
+        flex: 1;
+        width: 55%;
 
-      img {
-        width: 100%;
+        img {
+          object-fit: fill;
+          width: 100%;
+          height: 100%;
+          object-position: center;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .swiper {
+          width: 100%;
+          overflow: hidden;
+
+          // fade 효과를 위한 스타일
+          .swiper-wrapper {
+            // position: relative;
+          }
+
+          .swiper-slide {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+
+            &.swiper-slide-active {
+              opacity: 1;
+            }
+          }
+
+          .swiper-pagination {
+            position: absolute;
+            width: $max-width;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            margin: auto;
+          }
+        }
+
+        &.fix-img {
+          flex: none;
+          width: 45%;
+          background-image: url(images/sec05-bg.jpg);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: relative;
+
+          p {
+            color: #FFF;
+            font-size: clamp(2rem, 3vw, 4rem);
+            font-weight: 600;
+            line-height: clamp(30px, 3vw, 55px);
+            position: absolute;
+            left: clamp(22px, 3vw, 66px);
+            bottom: clamp(35px, 3vw, 50px);
+          }
+        }
       }
     }
 
-    .btn {
-      margin-left: clamp(12px, 5vw, 66px);
-      margin-bottom: clamp(30px, 10vw, 120px);
-    }
 
-    p {
-      color: #fff;
-      font-size: clamp(1.2rem, 2vw, 1.8rem);
-      line-height: clamp(19px, 3vw, 28px);
-
-      img {
-        margin-left: 6px;
-        margin-right: 0px;
-        margin-top: 4px;
-        width: clamp(84px, 15vw, 125px);
-      }
-    }
 
 
     @include screen("mobile") {
 
-      background-image: none;
-      background-color: #c1b3a3;
-      padding-top: 0%;
-      padding-bottom: 15%;
+      .row {
+        display: block;
 
-      .app-inner {
-        text-align: center;
-        margin-top: -120px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+        .column {
+          width: 100%;
+          position: relative;
 
+          .swiper {
+            .swiper-pagination {
+              bottom: 30px;
+              left: 20px;
+            }
+          }
 
-
-      p {
-        text-align: left;
-        margin-top: 20px;
-
-        br {
-          display: none;
-        }
-
-        img {
-          margin-top: 0px;
-          width: 72px;
+          &.fix-img {
+            flex: none;
+            width: 100%;
+            background: none;
+          }
         }
       }
-
     }
   }
 }
