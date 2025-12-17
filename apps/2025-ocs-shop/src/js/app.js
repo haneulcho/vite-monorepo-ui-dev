@@ -129,7 +129,7 @@
           allowTouchMove: false,
           loopAdditionalSlides: 10,
           breakpoints: {
-            768: {
+            720: {
               slidesPerView: 5,
             },
             0: {
@@ -203,7 +203,7 @@
             }
           },
           breakpoints: {
-            768: {
+            720: {
               slidesPerView: 4,
               spaceBetween: 30,
             },
@@ -311,7 +311,7 @@
         slidesPerView: 'auto',
         spaceBetween: 20,
         breakpoints: {
-          768: {
+          720: {
             slidesPerView: 4,
             spaceBetween: 40,
           },
@@ -322,8 +322,6 @@
         }
       });
     }
-
-
 
     const sec07El = document.querySelector('.swiperSec07');
     if (sec07El) {
@@ -345,8 +343,54 @@
       });
     }
 
+    const sec08El = document.querySelector('.swiperSec08');
+    if (sec08El) {
+      const totalSlides = sec08El.querySelectorAll('.swiper-wrapper > .swiper-slide').length;
+      new Swiper(sec08El, {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 1000,
+        autoplay: { delay: 3000 },
+        navigation: {
+          nextEl: '.swiperSec08-next',
+          prevEl: '.swiperSec08-prev',
+        },
+        on: {
+          init: function () {
+            const currentEl = sec08El.querySelector('.swiperSec08-current');
+            const totalEl = sec08El.querySelector('.swiperSec08-total');
+            if (currentEl) currentEl.textContent = this.realIndex + 1;
+            if (totalEl) totalEl.textContent = totalSlides;
+          },
+          slideChange: function () {
+            const currentEl = sec08El.querySelector('.swiperSec08-current');
+            if (currentEl) currentEl.textContent = this.realIndex + 1;
+          }
+        }
+      });
+    }
 
+    // 모바일용 section8 슬라이드
+    const sec08MoEl = document.querySelector('.section8');
+    if (sec08MoEl) {
+      let sec08MoInited = false;
+      const swiperMoEl = sec08MoEl.querySelector('.swiperSec08-mo');
+      if (sec08MoInited || !swiperMoEl) return;
+      sec08MoInited = true;
 
+      new Swiper(swiperMoEl, {
+        loop: true,
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        speed: 500,
+        // autoplay: { delay: 3000 },
+      });
+    }
 
   };
 
@@ -407,5 +451,6 @@
     window.addEventListener('resize', handleResize, { passive: true });
 
   });
+
 })();
 

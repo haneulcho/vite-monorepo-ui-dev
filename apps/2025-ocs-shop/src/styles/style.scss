@@ -18,7 +18,7 @@ $app-name: "ocs-shop" !default;
 
 @import "app";
 
-@import "contents/floating";
+
 @import "contents/section1";
 @import "contents/section2";
 @import "contents/section3";
@@ -28,8 +28,6 @@ $app-name: "ocs-shop" !default;
 @import "contents/section7";
 @import "contents/section8";
 @import "contents/section9";
-@import "contents/section10";
-@import "contents/section11";
 
 
 @import "app_responsive";
