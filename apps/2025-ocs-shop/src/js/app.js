@@ -185,6 +185,7 @@
           spaceBetween: 20,
           speed: 300,
           autoplay: { delay: 3000 },
+          touchEventsTarget: 'container',
           navigation: {
             nextEl: '.swiperSec03-next',
             prevEl: '.swiperSec03-prev',

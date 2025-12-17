@@ -43,9 +43,12 @@
       gap: 30px;
 
       .column {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        a {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
 
         .num {
           font-size: clamp(1.4rem, 3vw, 1.6rem);
@@ -53,7 +56,7 @@
           line-height: clamp(20px, 3vw, 35px);
         }
 
-        p {
+        .desc {
           font-size: clamp(1.6rem, 3vw, 1.9rem);
           font-weight: 700;
           line-height: clamp(25px, 3vw, 29px);
@@ -223,7 +226,7 @@
           &.column01 {
             width: 100%;
 
-            p {
+            .desc {
               text-align: center;
             }
 
@@ -242,11 +245,14 @@
 
           &.column03 {
             width: 100%;
-            display: flex;
-            padding-right: 20px;
-            align-items: end;
 
-            p,
+            a {
+              display: flex;
+              padding-right: 20px;
+              align-items: end;
+            }
+
+            .desc,
             .num {
               width: 275px;
               padding: 0;
