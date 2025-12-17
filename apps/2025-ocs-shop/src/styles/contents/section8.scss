@@ -1,0 +1,121 @@
+.#{$app-name} {
+  .section8 {
+    width: 100%;
+    // overflow: visible;
+
+    .row {
+      width: 100vw;
+
+
+      .column {
+        // flex: 0.7;
+        width: 35%;
+
+        img {
+          display: block;
+          width: 100%;
+          // height: 100%;
+          // object-fit: contain;
+        }
+
+        .only-pc {
+          width: 100%;
+          height: 100%;
+        }
+
+        .swiper {
+          width: 100%;
+          // max-width: 716px;
+          height: 100%;
+          // aspect-ratio: 716 / 664;
+          overflow: hidden;
+          position: relative;
+
+          // fade 효과를 위한 스타일
+          .swiper-wrapper {
+            // position: relative;
+          }
+
+          .swiper-slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+
+            &.swiper-slide-active {
+              opacity: 1;
+            }
+          }
+        }
+
+        &.fix-img {
+          // display: flex;
+          // flex-wrap: wrap;
+          // flex: 1.3;
+          width: 65%;
+
+          .comm {
+            font-size: 0;
+            width: 33.333333%;
+            border-left: 1px solid var(--line-color);
+            border-top: 1px solid var(--line-color);
+            box-sizing: border-box;
+
+
+          }
+
+        }
+      }
+    }
+
+    .swiper-pagination {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      margin-top: 40px;
+      margin-left: -4px;
+    }
+
+
+
+
+
+
+    @include screen("mobile") {
+
+      .swiper {
+        overflow: hidden;
+        height: 264px;
+        width: 100%;
+
+        .swiper-slide {
+          max-width: 264px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      .row {
+        display: block;
+
+        .column {
+          &.fix-img {
+            width: 100%;
+          }
+        }
+      }
+
+      .app-inner {
+        padding-right: 0;
+
+
+
+      }
+    }
+  }
+}

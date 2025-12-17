@@ -1,0 +1,40 @@
+.#{$app-name} {
+  @media screen and (max-width: #{$breakpoint-tablet - 1px}) {
+    .only-mo {
+      display: block !important;
+    }
+
+    .only-pc {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: #{$breakpoint-tablet}) {
+    .only-mo {
+      display: none;
+    }
+
+    .only-pc {
+      display: block;
+    }
+  }
+}
+
+
+@media (max-width: 1800px) {
+  .visionStore .section3 .imgItem01 .imgItem02 {
+    top: -30vh;
+  }
+}
+
+@media (max-width: 1280px) {
+  .visionStore .section3 .imgItem01 .imgItem02 {
+    top: -10vh;
+  }
+}
+
+@media (max-width: 375px) {
+  .visionStore .section3 .imgItem01 .imgItem02 img {
+    margin-top: -100vh;
+  }
+}

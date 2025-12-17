@@ -1,0 +1,106 @@
+.#{$app-name} {
+  .section3 {
+    background-image: url(images/sec03-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 50px;
+
+    .headline {
+      h2 {
+        color: #fff;
+      }
+
+      p {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: clamp(20px, 3vw, 30px);
+        color: #fff;
+        margin-top: 10px;
+
+        .btn {
+          width: 151px;
+        }
+      }
+    }
+
+    .swiper {
+      margin-top: clamp(35px, 3vw, 40px);
+      overflow: hidden;
+
+      .shorts {
+        width: 100%;
+        max-width: 328px;
+        aspect-ratio: 328 / 416;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          background: transparent;
+        }
+
+        &.active::before {
+          display: none;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          position: relative;
+          z-index: 1;
+        }
+
+        &.active iframe {
+          pointer-events: auto;
+        }
+      }
+
+      .swiper-pagination {
+        margin-top: clamp(20px, 3vw, 25px);
+      }
+    }
+
+
+
+
+
+
+
+
+    @include screen("mobile") {
+
+      background-image: url(images/sec03-bg-mo.jpg);
+      padding-top: 55px;
+      padding-bottom: 60px;
+
+      .headline {
+
+
+        p {
+          flex-direction: column;
+          align-items: start;
+          margin-top: 24px;
+        }
+      }
+
+      .swiper {
+        overflow: inherit;
+        width: 100%;
+
+        .swiper-slide {
+          max-width: 328px;
+        }
+      }
+    }
+  }
+}

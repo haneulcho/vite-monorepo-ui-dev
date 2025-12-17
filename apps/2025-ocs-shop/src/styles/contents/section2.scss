@@ -1,0 +1,156 @@
+.#{$app-name} {
+  .section2 {
+    background-color: #E6E0D8;
+    padding-top: 90px;
+
+    .headline {
+      text-align: center;
+      margin-bottom: clamp(20px, 3vw, 40px);
+    }
+
+    .row {
+      gap: clamp(30px, 3vw, 60px);
+
+      .column {
+        flex: 1;
+
+        &+.column {
+          flex: none;
+          width: 40%;
+          padding-top: 8px;
+        }
+
+        .shorts {
+          width: 100%;
+          max-width: 807px;
+          aspect-ratio: 807 / 567;
+
+          iframe {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .caption {
+      color: #837052;
+      font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+      font-weight: 400;
+      line-height: 30px;
+      gap: 7px;
+
+      img {
+        vertical-align: middle;
+        position: relative;
+        bottom: 1px;
+        width: 15px;
+        height: 14px;
+      }
+
+      b {
+        font-weight: 700;
+      }
+    }
+
+    p {
+      font-size: clamp(1.4rem, 1vw, 1.7rem);
+      line-height: clamp(20px, 1.7vw, 30px);
+      font-weight: 300;
+
+      strong {
+        font-size: clamp(2.1rem, 3vw, 2.5rem);
+        font-weight: 600;
+        line-height: clamp(32px, 3vw, 37px);
+      }
+
+      &+p {
+        margin-top: clamp(10px, 1.5vw, 34px);
+      }
+    }
+
+    .swiper {
+      background-color: #fff;
+      margin-top: 45px;
+      border-top: 1px solid #C2B39A;
+      color: #A09686;
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      font-weight: 700;
+      line-height: normal;
+      line-height: 78px;
+      overflow: visible;
+
+      .swiper-wrapper {
+        transition-timing-function: linear !important;
+      }
+
+      .swiper-slide {
+
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+
+
+
+
+
+    @include screen("mobile") {
+      padding-top: 25%;
+
+      .app-inner {
+        padding: 0;
+      }
+
+      .headline {
+        text-align: left;
+        padding: 0 20px;
+      }
+
+      .row {
+        flex-direction: column-reverse;
+
+        .column {
+          width: 100%;
+          padding: 0;
+
+          &+.column {
+            width: 100%;
+            padding: 0 20px 20px;
+          }
+
+          .shorts {
+            width: 100%;
+          }
+        }
+      }
+
+      .caption {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1.6rem;
+        line-height: 28px;
+        margin-top: 16px;
+
+        &+p {
+          margin-top: 34px;
+        }
+      }
+
+      .swiper {
+        margin-top: 0;
+        font-size: clamp(1.4rem, 2vw, 1.9rem);
+        line-height: 60px;
+
+
+        .swiper-slide {
+          width: fit-content !important;
+          padding: 0 30px;
+        }
+      }
+    }
+  }
+}
