@@ -1,0 +1,110 @@
+.#{$app-name} {
+  .section4 {
+    article {
+      &.top {
+        background-image: url(images/sec04-bg.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-top: clamp(82px, 10vw, 140px);
+        padding-bottom: clamp(66px, 10vw, 177px);
+      }
+    }
+
+    .headline {
+      text-align: center;
+      color: #efe3d9;
+      margin-bottom: 190px;
+
+      h3 {
+        font-size: clamp(2.9rem, 3vw, 5.5rem);
+        line-height: clamp(40px, 4vw, 64px);
+        font-weight: 500;
+
+        &:after {
+          content: '';
+          display: block;
+          width: 2px;
+          height: clamp(54px, 4vw, 74px);
+          background-color: #807469;
+          margin: clamp(20px, 3vw, 28px) auto;
+        }
+      }
+
+      p {
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        line-height: clamp(30px, 4vw, 50px);
+        font-weight: 400;
+
+        b {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .desc {
+      .inner {
+        width: 50%;
+        display: flex;
+        justify-content: end;
+        flex-direction: column;
+        margin-left: auto;
+        padding-left: 120px;
+      }
+
+      p {
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        line-height: clamp(30px, 4vw, 45px);
+        font-weight: 400;
+        color: #434343;
+
+        b {
+          font-weight: 700;
+        }
+      }
+
+
+    }
+
+    .subtext {
+      padding-left: clamp(0px, 3vw, 50px);
+      margin-top: clamp(33px, 3vw, 74px);
+
+      img {
+        width: clamp(214px, 30vw, 329px);
+        margin-bottom: clamp(24px, 3vw, 34px);
+      }
+    }
+
+    .list-img {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+
+      li {
+        flex: 1;
+        position: relative;
+
+        span {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 20px;
+          text-align: center;
+          margin: auto;
+          color: #fff;
+          font-size: clamp(1.4rem, 3vw, 2.1rem);
+          line-height: 1;
+          font-weight: 600;
+
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    @include screen("mobile") {}
+  }
+}

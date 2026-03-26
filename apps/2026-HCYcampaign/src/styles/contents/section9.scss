@@ -1,0 +1,139 @@
+.#{$app-name} {
+  .section9 {
+    background-image: url(images/sec09-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 104px;
+    padding-bottom: 120px;
+
+    .app-inner {
+      article {
+        position: relative;
+      }
+    }
+
+    .headline {
+      margin-bottom: 70px;
+
+      h3 {
+        color: #004742;
+        font-weight: 600;
+        font-size: clamp(2.8rem, 3vw, 4.3rem);
+        line-height: clamp(43px, 4vw, 59px);
+      }
+
+      margin-bottom: clamp(74px, 10vw, 124px);
+    }
+
+    .imgItem {
+      position: absolute;
+      right: -30px;
+      bottom: -40%;
+      display: flex;
+      gap: 90px;
+
+      >span {
+        color: #fff;
+        font-weight: 700;
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        line-height: clamp(17px, 3vw, 32px);
+        margin-top: -2%;
+      }
+
+      .imgbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+
+
+        span {
+          color: #004742;
+          font-weight: 700;
+          font-size: clamp(1.4rem, 3vw, 1.8rem);
+          line-height: clamp(17px, 3vw, 32px);
+        }
+      }
+    }
+
+
+    .desc {
+
+
+      p {
+        color: #2f2f2f;
+        font-weight: 400;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        line-height: clamp(30px, 4vw, 42px);
+        margin-bottom: clamp(30px, 10vw, 40px);
+      }
+
+    }
+
+    .lastcopy {
+      width: 100%;
+      text-align: center;
+      margin-top: 200px;
+
+      &::before {
+
+        content: '';
+        display: block;
+        width: 2px;
+        height: clamp(74px, 10vw, 94px);
+        background: #76a397;
+        margin: auto;
+        margin-bottom: clamp(24px, 10vw, 50px);
+      }
+
+      p {
+        font-family: "Noto Serif KR", serif;
+        font-size: clamp(2.1rem, 3vw, 3.1rem);
+        line-height: clamp(33px, 4vw, 47px);
+        font-weight: 400;
+        color: #00616f;
+        margin-bottom: clamp(22px, 10vw, 30px);
+
+        b {
+          font-family: "Noto Serif KR", serif;
+          font-weight: 700;
+          font-size: clamp(2.5rem, 3vw, 3.7rem);
+          line-height: 1;
+
+          background: linear-gradient(45deg, #014d55 0%, #1a7e7a 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+        }
+      }
+
+      .btn {
+        background: linear-gradient(90deg, #003c41 0%, #00827d 80%);
+      }
+
+    }
+
+    @include screen("mobile") {
+      padding-top: 15%;
+      padding-bottom: 15%;
+
+
+    }
+  }
+
+  .infobox {
+    background-color: #d8ddb9;
+
+    p {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      line-height: clamp(24px, 3vw, 26px);
+      font-weight: 500;
+      color: #747762;
+      text-align: center;
+      padding: 30px 0;
+    }
+  }
+}

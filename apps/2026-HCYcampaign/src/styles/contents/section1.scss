@@ -1,0 +1,231 @@
+.#{$app-name} {
+  .section1 {
+    background-image: url(images/sec01-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: clamp(30px, 10vw, 70px);
+    padding-bottom: clamp(66px, 10vw, 186px);
+    height: calc(100dvh - 110px);
+    max-height: 988px;
+
+    .headline {
+      margin-bottom: 20px;
+
+      .label {
+        display: flex;
+        align-items: center;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        font-weight: 600;
+        color: #1d3c41;
+        margin-bottom: clamp(25px, 3vw, 52px);
+        line-height: 1;
+
+        .tooltip-wrap {
+          display: inline-block;
+          position: relative;
+          margin: 0 clamp(3px, 1vw, 7px);
+        }
+
+        .tooltip-target {
+          display: inline-flex;
+          font-size: clamp(1.3rem, 2vw, 1.7rem);
+          font-weight: 700;
+          background-color: #fff;
+          border-radius: 100px;
+          border: 1px solid #305e61;
+          height: clamp(23px, 3vw, 32px);
+          line-height: 1;
+          align-items: center;
+          justify-content: center;
+          padding-right: 10px;
+          padding-left: clamp(3px, 1vw, 6px);
+          cursor: pointer;
+
+
+          &::before {
+            content: '';
+            background-image: url(images/ico-help.png);
+            width: clamp(16px, 1vw, 19px);
+            height: clamp(16px, 1vw, 19px);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: clamp(4px, 1vw, 6px);
+          }
+        }
+
+        .tooltip {
+          position: absolute;
+          top: calc(100% + 12px);
+          left: 50%;
+          transform: translateX(-10%) translateY(8px);
+          font-size: clamp(1.1rem, 2vw, 1.4rem);
+          line-height: clamp(16px, 2vw, 22px);
+          font-weight: 400;
+          color: #fff;
+          background-color: #013c38;
+          border: 1px solid #fff;
+          padding: clamp(10px, 2vw, 24px) clamp(20px, 2vw, 30px);
+          width: max-content;
+          max-width: 420px;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        .tooltip-wrap:hover .tooltip,
+        .tooltip-wrap:focus-within .tooltip {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-10%) translateY(0);
+        }
+      }
+
+      img {
+        max-width: clamp(276px, 40vw, 515px);
+      }
+    }
+
+    .desc {
+      p {
+        color: #464b4b;
+        font-size: clamp(1.8rem, 2vw, 2.3rem);
+        line-height: clamp(31px, 3vw, 37px);
+        font-weight: 400;
+        font-family: "Noto Serif KR", serif;
+
+        em {
+          font-weight: 600;
+          font-family: "Noto Serif KR", serif;
+        }
+
+        &+p {
+          margin-top: clamp(28px, 2vw, 34px);
+        }
+      }
+
+
+    }
+
+    .btn {
+      margin-top: clamp(32px, 4vw, 42px);
+    }
+
+    .scroll-down {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 14px;
+      width: fit-content;
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      animation: scrollDownFloat 1.8s ease-in-out infinite;
+      will-change: transform;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #4b4f46;
+
+      &:after {
+        content: '';
+        display: block;
+        background-image: url(images/ico-scrolldown.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 37px;
+        height: 18px;
+      }
+    }
+
+    @keyframes scrollDownFloat {
+
+      0%,
+      100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, -8px);
+      }
+    }
+
+
+
+
+    @include screen("mobile") {}
+  }
+
+  .banner {
+    background-image: url(images/banner-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    // padding: 144px 0 170px;
+    padding-top: clamp(64px, 10vw, 144px);
+    padding-bottom: clamp(64px, 10vw, 170px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      color: #fff;
+      font-size: clamp(2.5rem, 3vw, 5.4rem);
+      font-weight: 700;
+
+      .btm {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-left: clamp(30px, 7vw, 210px);
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        font-size: clamp(1.4rem, 2vw, 2.5rem);
+        font-weight: 400;
+        gap: 20px;
+
+        &:before {
+          content: '';
+          width: 118px;
+          height: 1px;
+          background-color: #fff;
+          opacity: 0.5;
+
+        }
+      }
+    }
+
+    @include screen("mobile") {
+
+
+
+      h3 {
+        .btm {
+          margin-top: 6px;
+          display: block;
+        }
+
+        span {
+          margin-top: 24px;
+          justify-content: end;
+
+
+          &:before {
+            width: 68px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

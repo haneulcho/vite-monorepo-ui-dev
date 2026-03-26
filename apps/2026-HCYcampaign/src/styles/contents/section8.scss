@@ -1,0 +1,254 @@
+.#{$app-name} {
+  .section8 {
+    background-image: url(images/sec08-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    text-align: center;
+
+    .headline {
+
+      h3 {
+        color: #26332f;
+        font-weight: 700;
+        font-size: clamp(2.5rem, 3vw, 4.2rem);
+        line-height: clamp(38px, 4vw, 64px);
+
+        em {
+          font-family: "Noto Serif KR", serif;
+          color: #0c5850;
+        }
+      }
+
+      margin-bottom: clamp(74px, 10vw, 124px);
+    }
+
+    .infographic-card {
+      border: 11px solid #0c5850;
+      padding: 72px 54px 45px;
+      max-width: 1068px;
+      margin: auto;
+      width: 100%;
+      position: relative;
+
+      .tit {
+        color: #fff;
+        font-weight: 800;
+        font-size: clamp(2.1rem, 3vw, 3.2rem);
+        line-height: clamp(33px, 4vw, 44px);
+        background-color: #0c5850;
+        // width: clamp(120px, 3vw, 427px);
+        // height: clamp(66px, 3vw, 92px);
+        width: 427px;
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(-54%);
+
+        margin: auto;
+      }
+
+      .infocard {
+        display: flex;
+        gap: 34px;
+
+        >li {
+          flex: 1;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 5px 9px 4px rgba(0, 48, 55, 0.10);
+          text-align: left;
+          padding: 56px 40px 54px;
+          position: relative;
+          transition: transform 0.25s ease;
+
+          &:nth-child(1) {
+            background-image: url(images/sec08-ico01.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &:nth-child(2) {
+            background-image: url(images/sec08-ico02.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &:nth-child(3) {
+            background-image: url(images/sec08-ico03.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+
+          h4 {
+            color: #003037;
+            font-size: clamp(1.9rem, 3vw, 2.8rem);
+            line-height: 1;
+            font-family: $base-font-system;
+            font-weight: 800;
+            margin-bottom: clamp(18px, 7vw, 110px);
+          }
+
+          >ul {
+            >li {
+              font-size: clamp(1.6rem, 3vw, 2.5rem);
+              line-height: clamp(28px, 3vw, 35px);
+              font-weight: 600;
+              color: #003037;
+
+              &:before {
+                content: '';
+                background-image: url(images/ico-check.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: clamp(17px, 3vw, 21px);
+                height: clamp(11px, 3vw, 14px);
+                display: inline-block;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .infographic-card {
+        .infocard {
+          >li:hover {
+            transform: translateY(-8px);
+          }
+        }
+      }
+    }
+
+    .desc {
+      margin: clamp(44px, 10vw, 68px) 0;
+
+      p {
+        color: #26332f;
+        font-weight: 400;
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+        line-height: clamp(36px, 4vw, 51px);
+
+        &+p {
+          margin-top: 10px;
+        }
+
+        em {
+          color: #0c5850;
+          font-weight: 700;
+        }
+
+        strong {
+          color: #0c5850;
+          font-weight: 800;
+          font-size: clamp(2.5rem, 3vw, 3.6rem);
+        }
+      }
+    }
+
+    .infographic-chart {
+      background-color: #d2efc3;
+      padding-top: clamp(46px, 10vw, 62px);
+      padding-bottom: clamp(55px, 10vw, 75px);
+      max-width: 1068px;
+      margin: auto;
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      .tit {
+        font-weight: 700;
+        color: #003037;
+        font-size: clamp(2rem, 3vw, 2.7rem);
+        line-height: clamp(28px, 4vw, 44px);
+        margin-bottom: clamp(30px, 10vw, 40px);
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        max-width: 748px;
+        width: 100%;
+        gap: 10px;
+
+        li {
+          display: flex;
+          align-items: center;
+
+          &:last-child {
+
+            .value,
+            .label {
+              color: #3bc076;
+            }
+
+            .progress-bar {
+              .progress {
+                background-color: #3bc076;
+              }
+            }
+          }
+
+
+          .value {
+            line-height: 1;
+            font-size: clamp(3.3rem, 3vw, 4.8rem);
+            font-weight: 800;
+            color: #298f74;
+
+            span {
+              font-weight: 600;
+              font-size: clamp(1.9rem, 3vw, 2.7rem);
+            }
+          }
+
+          .progress-bar {
+            flex: 1;
+            width: 100%;
+            max-width: 315px;
+            background-color: #fff;
+            height: 41px;
+            margin-right: 30px;
+            margin-left: 36px;
+
+            .progress {
+              background-color: #298f74;
+              height: 100%;
+              width: 0;
+              transition: width 1.2s ease;
+            }
+          }
+
+          .label {
+            font-size: clamp(1.6rem, 3vw, 2.6rem);
+            font-weight: 700;
+            text-align: left;
+            width: 280px;
+            color: #298f74;
+
+
+          }
+        }
+      }
+    }
+
+    @include screen("mobile") {}
+  }
+}

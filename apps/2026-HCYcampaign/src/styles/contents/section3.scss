@@ -1,0 +1,132 @@
+.#{$app-name} {
+  .section3 {
+    padding-top: clamp(8%, 10vw, 140px);
+    padding-bottom: clamp(8%, 10vw, 140px);
+    background-color: #e3e4d3;
+
+    .headline {
+      margin-bottom: clamp(46px, 5vw, 120px);
+
+      h3 {
+        font-size: clamp(2.5rem, 3vw, 4.5rem);
+        line-height: clamp(37px, 4vw, 74px);
+        font-weight: 900;
+        text-align: center;
+        color: #04262a;
+
+
+        em {
+          font-family: "Noto Serif KR", serif;
+        }
+      }
+    }
+
+    article {
+      padding-top: 7%;
+
+      .row {
+        .col {
+          &.img {
+            img {
+              min-width: 650px;
+
+              &+img {
+                margin-top: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      &.top {
+        background-image: url(images/sec03-bg01.jpg);
+        background-size: contain;
+        background-position: top right;
+        background-repeat: no-repeat;
+
+        .row {
+          .col {
+            &+.col {
+              padding-left: 40px;
+              // padding-bottom: 5%;
+            }
+
+            &.img {
+              img {
+                &:last-child {
+                  margin-left: 270px;
+                  margin-top: -87px;
+                  min-width: 450px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.btm {
+        background-image: url(images/sec03-bg02.jpg);
+        background-size: cover;
+        background-position: left top;
+        background-repeat: no-repeat;
+        padding-top: 260px;
+        margin-top: -160px;
+
+        .time {
+          margin-left: -40px;
+        }
+
+        .row {
+          align-items: end;
+        }
+      }
+
+
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+
+      .col {
+        flex: 1;
+      }
+
+      .col.img {}
+    }
+
+    .time {
+      margin-left: -22px;
+    }
+
+    h4 {
+      font-size: clamp(3.1rem, 2vw, 4.6rem);
+      line-height: clamp(43px, 3vw, 65px);
+      font-weight: 600;
+      background: linear-gradient(45deg, #073b37 0%, #035b55 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: clamp(29px, 2vw, 60px);
+      margin-top: clamp(24px, 2vw, 30px);
+    }
+
+    p {
+      font-size: clamp(1.8rem, 1.5vw, 2.5rem);
+      line-height: clamp(30px, 2vw, 43px);
+      font-weight: 400;
+      color: #555555;
+
+      b {
+        font-weight: 700;
+      }
+
+      &+img {
+        margin-top: 33px;
+      }
+    }
+
+    @include screen("mobile") {}
+  }
+}

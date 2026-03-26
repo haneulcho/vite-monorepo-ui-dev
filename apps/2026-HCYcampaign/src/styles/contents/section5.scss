@@ -1,0 +1,86 @@
+.#{$app-name} {
+  .section5 {
+    background-image: url(images/sec05-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: clamp(66px, 10vw, 108px);
+    padding-bottom: 300px;
+
+    .headline {
+      margin-bottom: clamp(44px, 5vw, 80px);
+
+
+      h3 {
+        span {
+          display: block;
+          font-family: "Noto Serif KR", serif;
+          font-size: clamp(1.9rem, 3vw, 2.8rem);
+          line-height: 1;
+          font-weight: 700;
+          color: #5b4a43;
+          margin-bottom: clamp(30px, 3vw, 50px);
+        }
+
+        img {}
+      }
+
+      p {
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        line-height: clamp(30px, 4vw, 50px);
+        font-weight: 500;
+
+        b {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .desc {
+
+      p {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        line-height: clamp(30px, 4vw, 43px);
+        font-weight: 400;
+        color: #525151;
+
+        b {
+          font-weight: 700;
+          color: #5b4a43;
+        }
+
+        &+p {
+          margin-top: 24px;
+        }
+      }
+
+
+
+
+    }
+
+    .imgItem {
+      position: absolute;
+      right: -60px;
+      bottom: -220px;
+
+      img {
+        max-width: 512px;
+      }
+
+
+      &+.desc {
+        padding-left: 64px;
+        margin-top: clamp(26px, 5vw, 56px);
+
+        img {
+          margin-top: 33px;
+        }
+      }
+    }
+
+
+
+    @include screen("mobile") {}
+  }
+}
