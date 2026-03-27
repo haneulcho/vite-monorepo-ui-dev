@@ -45,7 +45,7 @@
         autoplay: { delay: 2000 },
         slidesPerView: 'auto',
         centeredSlides: true,
-        loop: false,
+        loop: true,
         speed: 500,
         touchRatio: 0.2,
         resistanceRatio: 5,

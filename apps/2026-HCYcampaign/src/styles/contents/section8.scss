@@ -27,7 +27,7 @@
 
     .infographic-card {
       border: 11px solid #0c5850;
-      padding: 72px 54px 45px;
+      padding: clamp(50px, 5vw, 72px) clamp(20px, 4vw, 54px) clamp(30px, 5vw, 45px);
       max-width: 1068px;
       margin: auto;
       width: 100%;
@@ -41,8 +41,8 @@
         background-color: #0c5850;
         // width: clamp(120px, 3vw, 427px);
         // height: clamp(66px, 3vw, 92px);
-        width: 427px;
-        height: 92px;
+        width: clamp(210px, 30vw, 427px);
+        height: clamp(66px, 10vw, 92px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -57,7 +57,7 @@
 
       .infocard {
         display: flex;
-        gap: 34px;
+        gap: clamp(10px, 2vw, 34px);
 
         >li {
           flex: 1;
@@ -65,35 +65,35 @@
           border-radius: 10px;
           box-shadow: 0 5px 9px 4px rgba(0, 48, 55, 0.10);
           text-align: left;
-          padding: 56px 40px 54px;
+          padding: clamp(30px, 4vw, 56px) clamp(16px, 3vw, 40px) clamp(30px, 4vw, 54px);
           position: relative;
           transition: transform 0.25s ease;
 
           &:nth-child(1) {
             background-image: url(images/sec08-ico01.png);
             background-size: contain;
-            background-position: center;
+            background-position: center right;
             background-repeat: no-repeat;
           }
 
           &:nth-child(2) {
             background-image: url(images/sec08-ico02.png);
             background-size: contain;
-            background-position: center;
+            background-position: center right;
             background-repeat: no-repeat;
           }
 
           &:nth-child(3) {
             background-image: url(images/sec08-ico03.png);
             background-size: contain;
-            background-position: center;
+            background-position: center right;
             background-repeat: no-repeat;
           }
 
 
           h4 {
             color: #003037;
-            font-size: clamp(1.9rem, 3vw, 2.8rem);
+            font-size: clamp(1.9rem, 2.5vw, 2.8rem);
             line-height: 1;
             font-family: $base-font-system;
             font-weight: 800;
@@ -102,8 +102,8 @@
 
           >ul {
             >li {
-              font-size: clamp(1.6rem, 3vw, 2.5rem);
-              line-height: clamp(28px, 3vw, 35px);
+              font-size: clamp(1.6rem, 2vw, 2.5rem);
+              line-height: clamp(28px, 2vw, 35px);
               font-weight: 600;
               color: #003037;
 
@@ -140,8 +140,8 @@
       p {
         color: #26332f;
         font-weight: 400;
-        font-size: clamp(1.8rem, 3vw, 2.7rem);
-        line-height: clamp(36px, 4vw, 51px);
+        font-size: clamp(1.8rem, 2vw, 2.7rem);
+        line-height: clamp(36px, 3vw, 51px);
 
         &+p {
           margin-top: 10px;
@@ -162,8 +162,11 @@
 
     .infographic-chart {
       background-color: #d2efc3;
-      padding-top: clamp(46px, 10vw, 62px);
-      padding-bottom: clamp(55px, 10vw, 75px);
+      padding-top: clamp(46px, 6vw, 62px);
+      padding-bottom: clamp(55px, 6vw, 75px);
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 10px;
       max-width: 1068px;
       margin: auto;
       width: 100%;
@@ -191,6 +194,13 @@
         li {
           display: flex;
           align-items: center;
+
+          .inner {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+            flex: 1;
+          }
 
           &:last-child {
 
@@ -225,7 +235,7 @@
             max-width: 315px;
             background-color: #fff;
             height: 41px;
-            margin-right: 30px;
+
             margin-left: 36px;
 
             .progress {
@@ -249,6 +259,80 @@
       }
     }
 
-    @include screen("mobile") {}
+    @include screen("mobile") {
+      padding-top: 15%;
+      padding-bottom: 15%;
+      background-image: url(images/sec08-bg-mo.jpg);
+
+      .app-inner {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .infographic-card {
+        border-width: 8px;
+        max-width: 440px;
+        padding-left: 33px;
+        padding-right: 33px;
+        padding-top: 60px;
+
+        .infocard {
+          flex-direction: column;
+          gap: 20px;
+
+          >li {
+            padding-left: 33px;
+            padding-right: 33px;
+
+            &:nth-child(1) {
+              background-image: url(images/sec08-ico01-mo.png);
+            }
+
+            &:nth-child(2) {
+              background-image: url(images/sec08-ico02-mo.png);
+            }
+
+            &:nth-child(3) {
+              background-image: url(images/sec08-ico03-mo.png);
+            }
+
+
+            h4 {
+              margin-bottom: 18px;
+            }
+          }
+        }
+      }
+
+      .infographic-chart {
+        max-width: 440px;
+
+        ul {
+          li {
+            display: block;
+            margin: auto;
+            width: 100%;
+
+            .inner {
+              margin-right: 0;
+            }
+
+
+
+            .progress-bar {
+              height: 28px;
+              margin-left: 10px;
+            }
+
+            .label {
+
+              margin-top: 10px;
+              width: 100%;
+              margin-left: 70px;
+            }
+          }
+        }
+      }
+    }
   }
 }

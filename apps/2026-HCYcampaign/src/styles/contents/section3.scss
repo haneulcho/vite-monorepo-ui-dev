@@ -28,7 +28,9 @@
         .col {
           &.img {
             img {
-              min-width: 650px;
+              // min-width: clamp(400px, 30vw, 650px);
+              width: clamp(350px, 40vw, 650px);
+
 
               &+img {
                 margin-top: 12px;
@@ -44,19 +46,31 @@
         background-position: top right;
         background-repeat: no-repeat;
 
+        .time {
+          width: clamp(240px, 20vw, 353px);
+        }
+
         .row {
           .col {
+            p {
+              padding-bottom: 50%;
+            }
+
             &+.col {
-              padding-left: 40px;
+              padding-left: clamp(1px, 7vw, 100px);
+              // padding-left: clamp(1px, 10vw, 40px);
               // padding-bottom: 5%;
+              flex: none;
             }
 
             &.img {
               img {
                 &:last-child {
-                  margin-left: 270px;
+                  position: absolute;
+                  bottom: calc(0px - 14%);
+                  margin-left: clamp(150px, 15vw, 270px);
                   margin-top: -87px;
-                  min-width: 450px;
+                  width: clamp(300px, 40vw, 450px);
                 }
               }
             }
@@ -69,15 +83,28 @@
         background-size: cover;
         background-position: left top;
         background-repeat: no-repeat;
-        padding-top: 260px;
+        padding-top: 400px;
         margin-top: -160px;
 
         .time {
           margin-left: -40px;
+          width: clamp(200px, 15vw, 380px);
         }
 
         .row {
           align-items: end;
+
+          .col {
+            &:first-child {
+              padding-right: clamp(40px, 5vw, 150px);
+            }
+
+            p {
+              &+img {
+                width: clamp(280px, 20vw, 380px);
+              }
+            }
+          }
         }
       }
 
@@ -86,10 +113,14 @@
 
     .row {
       display: flex;
-      align-items: center;
+      justify-content: center;
+      align-items: end;
 
       .col {
-        flex: 1;
+        // flex: 1;
+        flex: none;
+        display: flex;
+        flex-direction: column;
       }
 
       .col.img {}
@@ -127,6 +158,105 @@
       }
     }
 
-    @include screen("mobile") {}
+    @include screen("mobile") {
+      padding-top: 15%;
+      padding-bottom: 0;
+
+      .app-inner {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      .mo-img-layout {
+        img {
+          width: 60%;
+          position: relative;
+          z-index: 1;
+          // left: ;
+          left: 40%;
+          transform: translateX(-50%);
+
+          &+img {
+            transform: translateX(0);
+            right: auto;
+            left: auto;
+            width: 70%;
+            margin-top: -23px;
+            position: relative;
+            z-index: 0;
+          }
+        }
+      }
+
+      article {
+        padding-top: 7%;
+
+        .row {
+          .col {
+            &.img {
+              img {
+                width: 100%;
+
+                &+img {
+                  margin-top: 6px;
+                }
+              }
+            }
+          }
+        }
+
+        &.top {
+          background-image: url(images/sec03-bg01-mo.jpg);
+          background-position: bottom center;
+
+          .row {
+            .col {
+              p {
+                padding-bottom: 44px;
+              }
+
+              &.text {
+                padding-top: 85px;
+              }
+            }
+          }
+        }
+
+        &.btm {
+          background-image: url(images/sec03-bg02-mo.jpg);
+          background-position: top center;
+          padding-top: 0;
+          margin-top: -80px;
+          padding-bottom: 15%;
+
+          .time {
+            margin-left: 0;
+          }
+
+          .row {
+            .col {
+              &.text {
+                padding-top: 240px;
+                padding-bottom: 10%;
+              }
+            }
+          }
+        }
+      }
+
+      .row {
+        flex-direction: column;
+
+        .col {
+          flex: 1;
+          width: 100%;
+
+          &.text {
+            padding-left: 33px !important;
+            padding-right: 33px !important;
+          }
+        }
+      }
+    }
   }
 }

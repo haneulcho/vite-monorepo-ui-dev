@@ -2,7 +2,7 @@
   .section6 {
     background-image: url(images/sec06-bg.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center left;
     background-repeat: no-repeat;
     padding-bottom: 100px;
     height: 830px;
@@ -69,6 +69,20 @@
       text-align: center;
     }
 
-    @include screen("mobile") {}
+    @include screen("tablet") {
+      background-position: 25% 0px;
+    }
+
+    @include screen("mobile") {
+      background-image: url(images/sec06-bg-mo.jpg);
+      background-position: top;
+      padding-bottom: 10%;
+      height: 700px;
+
+      &:after {
+        content: none;
+      }
+
+    }
   }
 }

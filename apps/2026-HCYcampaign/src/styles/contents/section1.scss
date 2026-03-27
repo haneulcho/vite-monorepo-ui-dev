@@ -9,6 +9,11 @@
     height: calc(100dvh - 110px);
     max-height: 988px;
 
+    .app-inner {
+      position: relative;
+      z-index: 1;
+    }
+
     .headline {
       margin-bottom: 20px;
 
@@ -132,6 +137,7 @@
       font-size: 2rem;
       font-weight: 400;
       color: #4b4f46;
+      z-index: 1;
 
       &:after {
         content: '';
@@ -159,72 +165,50 @@
 
 
 
+    @include screen("tablet") {
+      background-position: 70% 0px;
 
-    @include screen("mobile") {}
-  }
-
-  .banner {
-    background-image: url(images/banner-bg.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    // padding: 144px 0 170px;
-    padding-top: clamp(64px, 10vw, 144px);
-    padding-bottom: clamp(64px, 10vw, 170px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    h3 {
-      color: #fff;
-      font-size: clamp(2.5rem, 3vw, 5.4rem);
-      font-weight: 700;
-
-      .btm {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding-left: clamp(30px, 7vw, 210px);
-      }
-
-      span {
-        display: flex;
-        align-items: center;
-        font-size: clamp(1.4rem, 2vw, 2.5rem);
-        font-weight: 400;
-        gap: 20px;
-
-        &:before {
-          content: '';
-          width: 118px;
-          height: 1px;
-          background-color: #fff;
-          opacity: 0.5;
-
-        }
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60%;
+        height: 100%;
+        filter: blur(40px);
+        content: '';
+        background-color: rgba(224, 229, 217, 0.7);
       }
     }
 
     @include screen("mobile") {
+      background-image: url(images/sec01-bg-mo.jpg);
+      background-position: top center;
+      padding: 10% 0 15% 0;
+      height: auto;
+      max-height: inherit;
 
+      .headline {
+        text-align: center;
 
-
-      h3 {
-        .btm {
-          margin-top: 6px;
-          display: block;
+        .label {
+          justify-content: center;
         }
 
-        span {
-          margin-top: 24px;
-          justify-content: end;
-
-
-          &:before {
-            width: 68px;
-            opacity: 1;
-          }
+        img {
+          margin-top: 10px;
+          max-width: 90%;
         }
+      }
+
+      .desc {
+        padding-top: 40vh;
+        padding-left: 26px;
+        padding-right: 26px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 360px;
       }
     }
   }

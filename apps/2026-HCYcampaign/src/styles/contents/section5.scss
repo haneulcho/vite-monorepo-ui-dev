@@ -10,6 +10,9 @@
     .headline {
       margin-bottom: clamp(44px, 5vw, 80px);
 
+      img {
+        width: clamp(360px, 25vw, 434px);
+      }
 
       h3 {
         span {
@@ -20,9 +23,11 @@
           font-weight: 700;
           color: #5b4a43;
           margin-bottom: clamp(30px, 3vw, 50px);
+
+
         }
 
-        img {}
+
       }
 
       p {
@@ -39,8 +44,8 @@
     .desc {
 
       p {
-        font-size: clamp(1.8rem, 3vw, 2.5rem);
-        line-height: clamp(30px, 4vw, 43px);
+        font-size: clamp(1.8rem, 2vw, 2.5rem);
+        line-height: clamp(30px, 3vw, 43px);
         font-weight: 400;
         color: #525151;
 
@@ -54,18 +59,22 @@
         }
       }
 
+      img {
+        width: clamp(300px, 25vw, 348px);
+      }
+
 
 
 
     }
 
-    .imgItem {
+    .img-wrap {
       position: absolute;
       right: -60px;
       bottom: -220px;
 
       img {
-        max-width: 512px;
+        max-width: clamp(440px, 25vw, 512px);
       }
 
 
@@ -80,7 +89,49 @@
     }
 
 
+    @include screen("tablet") {
+      .img-wrap {
+        right: 30px;
 
-    @include screen("mobile") {}
+        &+.desc {
+          padding-left: 0;
+        }
+      }
+
+
+    }
+
+    @include screen("mobile") {
+      background-image: url(images/sec05-bg-mo.jpg);
+      background-position: center;
+      padding-top: 15%;
+      padding-bottom: 15%;
+
+      .headline {
+
+        h3 {
+          img {
+            width: 270px;
+          }
+        }
+      }
+
+      .img-wrap {
+        position: static;
+        margin-top: 50vh;
+        width: 100%;
+        max-width: 400px;
+
+
+        img {
+          max-width: 100%;
+        }
+
+
+        &+.desc {
+          padding-left: 0;
+        }
+      }
+    }
   }
 }

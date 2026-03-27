@@ -18,6 +18,7 @@
     }
 
     .swiperSec07mo {
+      padding: 0 10%;
 
       .swiper-wrapper {
         .swiper-slide {
@@ -48,8 +49,8 @@
 
       .swiper-wrapper {
         .swiper-slide {
-          width: 373px;
-          height: 479px;
+          // width: 373px;
+          // height: 479px;
           perspective: 1200px;
 
 
@@ -152,7 +153,7 @@
 
     small {
       color: #f0e7df;
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
       line-height: clamp(60px, 4vw, 66px);
       font-weight: 500;
       text-align: right;
@@ -164,16 +165,14 @@
 
 
     @include screen("mobile") {
-      padding: 0 0 15%;
+      background-image: url(images/sec07-bg-mo.jpg);
+      padding-top: 15%;
+      padding-bottom: 5%;
 
+      small {
+        text-align: center;
+      }
 
     }
-  }
-}
-
-
-@media (max-width: 1024px) {
-  .visionStore .section7 .swiperSec07 .inner .right p br {
-    display: none;
   }
 }
