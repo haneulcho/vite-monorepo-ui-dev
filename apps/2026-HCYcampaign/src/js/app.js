@@ -165,6 +165,11 @@
 
     // 약간의 지연 후 이미지 스위치(초기 렌더 보정)
     setTimeout(switchImages, 300);
+
+    // 모바일 전용 카드뒤집기 클릭제어
+    $('.swiperSec07mo').on('click', '.swiper-slide', function () {
+      $(this).toggleClass('click');
+    });
   });
 })();
 

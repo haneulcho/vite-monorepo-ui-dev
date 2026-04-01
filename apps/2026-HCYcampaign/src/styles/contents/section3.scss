@@ -1,6 +1,6 @@
 .#{$app-name} {
   .section3 {
-    padding-top: clamp(8%, 10vw, 140px);
+    // padding-top: clamp(1px, 10vw, 40px);
     padding-bottom: clamp(8%, 10vw, 140px);
     background-color: #e3e4d3;
 
@@ -10,13 +10,14 @@
       h3 {
         font-size: clamp(2.5rem, 3vw, 4.5rem);
         line-height: clamp(37px, 4vw, 74px);
-        font-weight: 900;
+        font-weight: 600;
         text-align: center;
         color: #04262a;
 
 
         em {
           font-family: "Noto Serif KR", serif;
+          color: #035c56;
         }
       }
     }
@@ -159,7 +160,7 @@
     }
 
     @include screen("mobile") {
-      padding-top: 15%;
+      padding-top: 10%;
       padding-bottom: 0;
 
       .app-inner {

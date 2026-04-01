@@ -30,6 +30,11 @@
     font-weight: 900;
     font-family: $base-font-system;
     color: #fff;
+    transition: transform 300ms;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
 
     &:after {
       content: '';

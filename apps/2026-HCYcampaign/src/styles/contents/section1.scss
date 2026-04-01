@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     padding-top: clamp(30px, 10vw, 70px);
     padding-bottom: clamp(66px, 10vw, 186px);
-    height: calc(100dvh - 110px);
+    // min-height: calc(100dvh - 110px);
     max-height: 988px;
 
     .app-inner {

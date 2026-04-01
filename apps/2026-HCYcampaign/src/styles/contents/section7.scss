@@ -8,13 +8,17 @@
     padding-bottom: 120px;
 
     .headline {
-      color: #f0e7df;
-      font-family: "Noto Serif KR", serif;
-      font-size: clamp(1.8rem, 3vw, 4.1rem);
-      line-height: clamp(38px, 4vw, 66px);
-      text-align: center;
-      font-weight: 600;
+
       margin-bottom: clamp(44px, 5vw, 54px);
+
+      h3 {
+        color: #f0e7df;
+        font-family: "Noto Serif KR", serif;
+        font-size: clamp(1.8rem, 3vw, 4.1rem);
+        line-height: clamp(38px, 4vw, 66px);
+        text-align: center;
+        font-weight: 600;
+      }
     }
 
     .swiperSec07mo {
@@ -24,6 +28,12 @@
         .swiper-slide {
           width: inherit !important;
           height: inherit !important;
+
+          &.click {
+            .inner {
+              transform: rotateY(180deg);
+            }
+          }
 
           .inner {
 
@@ -39,6 +49,18 @@
           //   position: absolute;
           //   left: 999rem;
           // }
+        }
+      }
+    }
+
+    .swiperSec07pc {
+      .swiper-wrapper {
+        .swiper-slide {
+          &:hover {
+            .inner {
+              transform: rotateY(180deg);
+            }
+          }
         }
       }
     }
@@ -92,11 +114,7 @@
             transform: rotateY(180deg);
           }
 
-          &:hover {
-            .inner {
-              transform: rotateY(180deg);
-            }
-          }
+
 
           &.slideItem01 {
             .front {
