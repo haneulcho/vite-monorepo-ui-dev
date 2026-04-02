@@ -14,11 +14,11 @@
     "dev:chosen": "turbo run dev --filter=@repo/2025-chosen",
     "dev:1000girls": "turbo run dev --filter=@repo/2025-1000girls-s2",
     "lint": "turbo run lint",
-    "format": "prettier --write --cache --ignore-unknown \"**/*.{js,jsx,ts,tsx,md,css,scss}\"",
+    "format": "biome format --write .",
     "clean": "turbo run clean && rm -rf node_modules && pnpm i"
   },
-  "prettier": "@repo/config-prettier",
   "devDependencies": {
+    "@biomejs/biome": "2.3.8",
     "turbo": "^2.5.8"
   },
   "packageManager": "pnpm@10.20.0",

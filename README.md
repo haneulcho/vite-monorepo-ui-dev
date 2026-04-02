@@ -4,7 +4,7 @@
 
 ## 주요 특징
 - `apps/` 아래에 독립적인 Vite 프로젝트(예: `202511-event`, `2025-homepage`)를 개발
-- 공유 패키지: ESLint/Prettier/Vite 설정, SCSS 유틸, 접근 제어 위젯 등을 `@repo/*` 패키지로 배포, Workspace에서 활용
+- 공유 패키지: Vite 설정, SCSS 유틸, 접근 제어 위젯 등을 `@repo/*` 패키지로 배포, Workspace에서 활용
 - 일관된 빌드: `@repo/config-vite`가 base 경로, HTML include 플러그인, 이미지 경로 치환, 이미지 압축, CSS 옵션, `monorepo` 모드 출력을 공통화합니다.
 - 선택 배포: 변경된 프로젝트만 `dist/<프로젝트명>`에 빌드 후 GitHub Pages에 업로드합니다.
 
@@ -32,8 +32,8 @@ pnpm build --filter=@repo/2025-homepage -- --mode monorepo
 | --- | --- |
 | `pnpm dev` | Turborepo로 전체 프로젝트 `dev` 스크립트를 실행 (여러 포트를 동시에 열 때 유용) |
 | `pnpm build` | 전체 프로젝트 `build` 작업을 실행. 로컬 베타용이며 GitHub Pages 배포 구조가 필요하면 `-- --mode monorepo` 사용 |
-| `pnpm lint` | ESLint 검사 |
-| `pnpm format` | Prettier 규칙 일괄 수정 |
+| `pnpm lint` | Biome 검사 (lint + format 체크) |
+| `pnpm format` | Biome formatter로 일괄 수정 |
 | `pnpm clean` | 각 Workspace의 `clean` 태스크 실행 후 root `node_modules`를 삭제하고 재설치 |
 
 ## Monorepo 구조
@@ -47,11 +47,10 @@ pnpm build --filter=@repo/2025-homepage -- --mode monorepo
 │       └── package.json       # 프로젝트 전용 의존성 및 스크립트
 │   └── README.md
 ├── packages/
-│   ├── config-eslint/         # ESLint 공유 설정 (@repo/config-eslint)
-│   ├── config-prettier/       # Prettier 공유 설정 (@repo/config-prettier)
 │   ├── config-vite/           # 캠페인 전용 Vite config 헬퍼 (@repo/config-vite)
 │   └── styles/                # 공통 SCSS 유틸 (@repo/styles)
 ├── scripts/                   # CI에서 사용하는 빌드/정리 스크립트
+├── biome.json                 # Biome(Lint/Format) 통합 설정
 ├── dist/                      # `monorepo` 모드 빌드 결과 모음 (CI 캐시 대상)
 ├── package.json               # root 스크립트 및 devDependencies
 ├── pnpm-workspace.yaml        # Workspace 정의
@@ -69,7 +68,7 @@ pnpm build --filter=@repo/2025-homepage -- --mode monorepo
   import { defineCampaignConfig } from '@repo/config-vite';
   export default defineCampaignConfig({ appPath: '원하는 산출물 경로/프로젝트 이름' });
   ```
-- `@repo/config-eslint`, `@repo/config-prettier`: 자주 사용하는 Lint, Code 포맷 설정 모음입니다.
+- ESLint/Prettier는 Biome(2.x) 단일 도구로 통합했습니다. `pnpm lint`, `pnpm format`으로 실행합니다.
 
 ## GitHub Pages 배포 파이프라인
 - Workflow: `.github/workflows/ci.yml`
